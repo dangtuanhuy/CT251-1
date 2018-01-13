@@ -1,0 +1,24 @@
+#navbar {
+    position: fixed;
+    min-height: 100%;
+    padding-top: 1em;
+}
+
+.nav .nav-link .nav-link-text {
+    font-size: 0.8rem;
+}
+
+.nav .nav-link p {
+    color: whitesmoke;
+}
+
+.bg-success-light {
+    background-color: #73C991;
+}
+
+.btn-bottom-right {
+    /* position: absolute; */
+    margin-top: 15px;
+    margin-right:
+}
+/* #73C991 */
