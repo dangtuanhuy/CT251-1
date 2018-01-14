@@ -16,10 +16,32 @@
     background-color: #73C991;
 }
 
+.index-label {
+    min-width: 220px;
+}
+
 .img-book {
     max-height: 160px;
 }
 
 .link-title:hover {
     text-decoration: none;
+}
+
+#footer {
+    margin-top: 60px;
+    padding-left: 50px;
+            /* padding-left: 3em;
+    padding-top: 0.75em; */
+}
+
+#footer span {
+    font-weight: bold;
+}
+
+#footer .right {
+    float: right;
+}
+#footer a {
+    color: #343a40;
 }
