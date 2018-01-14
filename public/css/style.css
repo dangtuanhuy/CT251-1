@@ -16,9 +16,10 @@
     background-color: #73C991;
 }
 
-.btn-bottom-right {
-    /* position: absolute; */
-    margin-top: 15px;
-    margin-right:
+.img-book {
+    max-height: 160px;
 }
-/* #73C991 */
+
+.link-title:hover {
+    text-decoration: none;
+}
