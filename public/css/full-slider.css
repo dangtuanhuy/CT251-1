@@ -5,16 +5,18 @@
  */
 
 .carousel-item {
-  height: 50vh;
+  /* height: 50px; */
   min-height: 150px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  max-height: 30px;
 }
-.chieucao
+/* .chieucao
 {
 	height: 40%;
 	width: 60%
 }
+ */

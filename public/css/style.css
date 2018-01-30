@@ -45,3 +45,7 @@
 #footer a {
     color: #343a40;
 }
+
+.carousel {
+    max-height: 300px; !important
+}
