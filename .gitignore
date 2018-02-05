@@ -1,3 +1,10 @@
+.vscode/
+
+# Docker
 Docker.sh
 Dockerfile
-.vscode/
+
+# composer
+vendor/
+composer.phar
+composer.lock
