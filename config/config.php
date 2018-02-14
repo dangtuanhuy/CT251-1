@@ -2,11 +2,11 @@
 
 defined("LIBRARY_PATH")
     or define("LIBRARY_PATH", realpath(dirname(__FILE__) . '/library'));
-     
+
 defined("TEMPLATES_PATH")
-    or define("TEMPLATES_PATH", realpath(dirname(__FILE__) . '/templates'));
- 
-defined("INCLUDES_PATH")
-    or define("INCLUDES_PATH", realpath(dirname(__FILE__) . '/includes'));
+    or define("TEMPLATES_PATH", dirname(__DIR__) . '/templates');
+
+defined("PUBLIC_PATH")
+    or define("PUBLIC_PATH", dirname(__DIR__) . '/public');
 
 ?>
