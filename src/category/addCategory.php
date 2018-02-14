@@ -1,17 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
 <?php
-    include_once("../../config.db.php");
+    include_once("../../config/config.db.php");
     $name = "";
-    $detail  = "";
+    $details  = "";
     if( isset($_POST["btnAdd"]))
     {
         $name = $_POST["txtName"];
-        $name = $_POST["txtDetails"];
-        $sqlinsert ="INSERT INTO `category`(`CategoryNames`, `CategoryDescription`) VALUES('name','details')";
+        $details= $_POST["txtDetails"];
+        $sqlinsert ="INSERT INTO `category`(`CategoryNames`, `CategoryDescription`) VALUES('$name','$details')";
+        mysqli_query($conn,$sqlinsert);
     }
 
 
 ?>
-
+<div class="container">
 <form class="form-horizontal" id="frmForm" name="frmForm" method="post">
 			<div class="row">
 				<h1 class="well">Thêm Loại Sách</h1>
@@ -23,7 +42,7 @@
 					<div class="form-group">
 						<label for="txtDetails" class="control-label">Mô tả chi tiết:</label>
 
-						<textarea laceholder="Sách dành cho thiếu nhi" class="form-control" name="txtDetails" id="txtDetails" required="true"></textarea>
+						<textarea placeholder="Sách dành cho thiếu nhi" class="form-control" name="txtDetails" id="txtDetails" required="true"></textarea>
 					</div>
 					<div class="form-group">
 
@@ -32,3 +51,6 @@
 					</div>
 				</div>
 			</form>
+            </div>
+</body>
+</html>

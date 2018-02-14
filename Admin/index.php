@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Dashboard by Bootstrapious.com</title>
+    <title>Phát Triển Ứng Dụng Trên Windowns</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -46,7 +46,14 @@
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="index.html"> <i class="icon-home"></i>Home                             </a></li>
+            <li><a href="#Dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-bars"></i>Quản lý Sách</a>
+            <ul id="Dropdown1" class="collapse list-unstyled ">
+                <li><a href="#">Quản lý danh mục sách</a></li>
+                <li><a href="#">Quản lý nhà xuất bản</a></li>
+                <li><a href="#">Quản lý tác giả</a></li>
+                <li><a href="#">Quản lý tác sách</a></li>
+              </ul>
+            </li>
             <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
             <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
             <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
