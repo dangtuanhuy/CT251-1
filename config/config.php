@@ -9,4 +9,6 @@ defined("TEMPLATES_PATH")
 defined("PUBLIC_PATH")
     or define("PUBLIC_PATH", dirname(__DIR__) . '/public');
 
+defined("ROOT_PATH")
+    or define("ROOT_PATH", dirname(__DIR__));
 ?>

@@ -22,24 +22,24 @@
                 <div class="card">
                     <div class="card-header bg-success-light text-center" style="color: #fff">Thông báo mới</div>
                     <ul class="list-group list-group-flush">
+                    <?php
+                    $query = "SELECT `NewsId`, `Title` FROM `news` ORDER BY `NewsDate` DESC LIMIT 5;";
+                    $news = $conn->query($query);
+                    while ($new = $news->fetch_array(MYSQLI_ASSOC)) 
+                    {
+                    ?>
                         <li class="list-group-item">
-                            <a href="">Tin mới</a>
+                            <a href=<?= PUBLIC_PATH.'/news.php?id='.$new['NewsId'] ?>>
+                                <?= $new['Title'];?> 
+                            </a>
                         </li>
-                        <li class="list-group-item">
-                            <a href="">Tin mới</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">Tin mới</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">Tin mới</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="">Tin mới</a>
-                        </li>
+                    <?php
+                    }
+                    mysqli_free_result($news);
+                    ?>
                     </ul>
                 </div>
-                <a href="news.html" class="float-right mt-2 link-title">
+                <a href=<?= PUBLIC_PATH."/news.php" ?> class="float-right mt-2 link-title">
                     Xem thêm
                     <i class="fa fa-chevron-right"></i>
                     <i class="fa fa-chevron-right"></i>
@@ -59,96 +59,122 @@
             </form>
         </div>
         <!-- ///Search bar -->
-        <!-- New Added Book -->
+        <!-- Recently Updated Book -->
         <div class="row justify-content-md-center py-3">
-            <button type="button" class="btn btn-success btn-lg index-label" disabled>Sách mới cập nhật</button>
+            <button type="button" class="btn btn-primary btn-lg index-label" disabled>Sách mới cập nhật</button>
         </div>
+        <?php
+        $query = "SELECT * FROM `book` ORDER BY `BookUpdateDate` DESC LIMIT 6;";
+        $start_row = true; // split line
+        $books = $conn->query($query);
+        while ($book = $books->fetch_array(MYSQLI_ASSOC)) 
+        {
+            $temp = "SELECT `ImgBook` FROM `imgbook` WHERE `BookId`=".$book['BookId'];
+            $img_book = $conn->query($temp)->fetch_object();
+            // Check if imgbook is empty
+            $img = is_object($img_book) ? $img_book->ImgBook : 'public/images/no-image.jpg';
+            if ($start_row):
+                $start_row = false;
+        ?>
         <div class="row py-2">
             <div class="col">
                 <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
+                     <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
+                     <div class="media-body">
+                        <a href="" class="text-primary link-title">
+                            <h5 class="mt-0"><?= $book['BookNames'] ?>
+                            <?php if ($book['BookQuantity'] == 0): ?>
+                            <span class="badge badge-default">Không có sẵn</span>
+                            <?php endif; ?>
+                            </h5>
+                        </a>
+                        <?= $book['BookDescription']?>
                     </div>
                 </div>
             </div>
+        <?php
+            else:
+                $start_row = true;
+        ?>
             <div class="col">
                 <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
+                    <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
                     <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
+                        <a href="" class="text-primary link-title">
+                            <h5 class="mt-0"><?= $book['BookNames'] ?>
+                            <?php if ($book['BookQuantity'] == 0): ?>
+                            <span class="badge badge-default">Không có sẵn</span>
+                            <?php endif; ?>
+                            </h5>
+                        </a>
+                        <?= $book['BookDescription']?>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row py-2">
-            <div class="col">
-                <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ///New Added Book -->
+        <?php 
+            endif; 
+        }
+        ?>
+        <!-- ///Recently Updated Book -->
         <hr>
         <!-- Popular book -->
         <div class="row justify-content-md-center pt-1 pb-2">
             <button type="button" class="btn btn-danger btn-lg index-label" disabled>Sách phổ biến</button>
         </div>
+        <?php
+        $query = "SELECT * FROM `book` ORDER BY `BookLentTimes` DESC LIMIT 6;";
+        $start_row = true; // split line
+        $books = $conn->query($query);
+        while ($book = $books->fetch_array(MYSQLI_ASSOC)) 
+        {
+            $temp = "SELECT `ImgBook` FROM `imgbook` WHERE `BookId`=".$book['BookId'];
+            $img_book = $conn->query($temp)->fetch_object();
+            // Check if imgbook is empty
+            $img = is_object($img_book) ? $img_book->ImgBook : 'public/images/no-image.jpg';
+            if ($start_row):
+                $start_row = false;
+        ?>
         <div class="row py-2">
             <div class="col">
                 <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
+                     <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
+                     <div class="media-body">
+                        <a href="" class="text-primary link-title">
+                            <h5 class="mt-0"><?= $book['BookNames'] ?>
+                            <?php if ($book['BookQuantity'] == 0): ?>
+                            <span class="badge badge-danger">Không có sẵn</span>
+                            <?php endif; ?>
+                            </h5>
+                        </a>
+                        <?= $book['BookDescription']?>
                     </div>
                 </div>
             </div>
+        <?php
+            else:
+                $start_row = true;
+        ?>
             <div class="col">
                 <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
+                    <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
                     <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
+                        <a href="" class="text-primary link-title">
+                            <h5 class="mt-0"><?= $book['BookNames'] ?>
+                            <?php if ($book['BookQuantity'] == 0): ?>
+                            <span class="badge badge-default">Không có sẵn</span>
+                            <?php endif; ?>
+                            </h5>
+                        </a>
+                        <?= $book['BookDescription']?>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row py-2">
-            <div class="col">
-                <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="media">
-                    <img class="align-self-center mr-3 img-book" src="http://bit.ly/2r54nAz" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <a href="" class="text-primary link-title"><h5 class="mt-0">No Game No Life</h5></a>
-                        No Game No Life is a surreal comedy that follows Sora and Shiro, shut-in NEET siblings and the online gamer duo behind the legendary username "Blank." They view the real world as just another lousy game; however, a strange e-mail challenging them to a chess match changes everything—the brother and sister are plunged into an otherworldly realm where they meet Tet, the God of Games.
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php 
+            endif; 
+        }
+        ?>
         <!-- ///Popular book -->
     </div>
 </div>        
