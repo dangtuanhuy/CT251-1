@@ -13,15 +13,26 @@ a:hover { text-decoration: none; }
 #navbar {
     position: fixed;
     min-height: 100%;
-    padding-top: 1em;
+    max-width: 80px;
+}
+
+.nav .nav-link {
+    color: #ebe1e1; 
+    padding: .5em;
+}
+
+.nav a:hover {
+    color: #4343bd;
+    background-color: #22AA55;
 }
 
 .nav .nav-link .nav-link-text {
     font-size: .75rem;
 }
 
-.nav .nav-link p {
-    color: whitesmoke;
+.nav #nav-user-img {
+    width: 60px;
+    height: auto;
 }
 
 .bg-success-light {

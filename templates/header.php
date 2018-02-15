@@ -4,7 +4,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> -->
     <link rel="stylesheet" href=<?= PUBLIC_PATH . '/css/bootstrap.min.css' ?>>
     <link rel="stylesheet" href=<?= PUBLIC_PATH . '/css/style.css' ?>>
-    <link rel="icon" href=<?= PUBLIC_PATH. '/images/icons/fav.ico' ?>>
+    <link rel="icon" href=<?= PUBLIC_PATH. '/images/fav.ico' ?>>
     <title>Book Management</title>
 </head>
 <body>
@@ -13,7 +13,10 @@
         <!-- Narbar -->
         <div class="col-1">
             <nav class="nav flex-column bg-success-light" id="navbar">
-                <a class="nav-link active text-center" href=<?= ROOT_PATH.'/index.php'?>>
+                <a class="nav-link text-center mb-5" href="#">
+                    <img id="nav-user-img" src=<?= PUBLIC_PATH.'/images/noava.png'?> alt="">
+                </a>
+                <a class="nav-link text-center" href=<?= ROOT_PATH.'/index.php'?>>
                     <p class="mb-0"><i class="fa fa-home"></i></p>
                     <p class="nav-link-text">Trang chủ</p>
                 </a>
@@ -29,7 +32,7 @@
                     <p class="mb-0"><i class="fa fa-question-circle"></i></p>
                     <p class="nav-link-text">FAQ</p>
                 </a>
-                <a class="nav-link active text-center" href="#">
+                <a class="nav-link text-center" href="#">
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng nhập</p>
                 </a>
