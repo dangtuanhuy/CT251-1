@@ -234,8 +234,9 @@ function insert_news($num_row_insert) {
     for ($i = 0; $i < $num_row_insert; $i++) {
         $username = $ID_USER[rand(0, count($ID_USER) - 1)];
         $image = 'resources/news/' . rand(1,20) . '.jpg';
-        $QUERY = "INSERT INTO `news` (`Title`, `NewsNames`, `NewsContent`, `ImgNews`, `Username`) VALUES
+        $QUERY = "INSERT INTO `news` (`Title`, `NewsDate`, `NewsNames`, `NewsContent`, `ImgNews`, `Username`) VALUES
                     ('{$GLOBALS['faker']->sentence(rand(4, 8))}', 
+                     '{$GLOBALS['faker']->dateTimeBetween('-3 year', 'now')->format('Y-m-d H:i:s')}',
                      '{$GLOBALS['faker']->sentence(rand(10, 20))}', 
                      '{$GLOBALS['faker']->text}', 
                      '{$image}', '{$username}');";
