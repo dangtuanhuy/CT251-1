@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> -->
     <link rel="stylesheet" href=<?= PUBLIC_PATH . '/css/bootstrap.min.css' ?>>
     <link rel="stylesheet" href=<?= PUBLIC_PATH . '/css/style.css' ?>>
@@ -29,10 +31,14 @@
                     <p class="nav-link-text">Danh sách</p>
                 </a>
                 <a class="nav-link text-center" href="#">
+                    <p class="mb-0"><i class="fa fa-shopping-cart"><span class="badge">1</span></i></p>
+                    <p class="nav-link-text">Giỏ sách</p>
+                </a>
+                <a class="nav-link text-center" href=<?= TEMPLATES_PATH.'/FAQ.php' ?>>
                     <p class="mb-0"><i class="fa fa-question-circle"></i></p>
                     <p class="nav-link-text">FAQ</p>
                 </a>
-                <a class="nav-link text-center" href="#">
+                <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-in.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng nhập</p>
                 </a>

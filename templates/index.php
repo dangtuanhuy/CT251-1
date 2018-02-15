@@ -8,7 +8,7 @@
                     <div class="media-body">
                         <h5 class="mt-0 mb-3 text-center">
                             <a href="" class="text-danger">
-                                Is It Wrong to Try to Pick Up Girls in a Dungeon?
+                                <strong>Is It Wrong to Try to Pick Up Girls in a Dungeon?</strong>
                             </a>
                         </h5>
                         Life in the bustling city of Orario is never dull, especially for Bell Cranel, a naïve young man who hopes to become the greatest adventurer in the land. After a chance encounter with the lonely goddess, Hestia, his dreams become a little closer to reality. With her support, Bell embarks on a fantastic quest as he ventures deep within the city's monster-filled catacombs, known only as the "Dungeon." Death lurks around every corner in the cavernous depths of this terrifying labyrinth, and a mysterious power moves amidst the shadows.                            

@@ -1,17 +1,4 @@
     </div>
-    <!-- Footer -->
-    <footer class="row py-1" id="footer">
-        <div class="container">
-            <span>Copyright &copy; 2018 - Book Manager Project</span>
-            <span class="right pl-3">
-                <a href=<?= TEMPLATES_PATH.'/about.php' ?>>Về chúng tôi</a>
-            </span>
-            <span class="right pl-3">
-                <a href="">Gửi phản hồi</a>
-            </span>
-        </div>
-    </footer>
-    <!-- ///Footer -->
 </div>
     <script src=<?= PUBLIC_PATH."/js/fontawesome-all.min.js" ?>></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
