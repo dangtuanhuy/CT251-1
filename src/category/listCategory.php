@@ -103,11 +103,13 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                 </table>
             </div>
         </div>
-    </div>        <script language="javascript">
-		$(document).ready(function() {
-    var table = $('#myTable').DataTable( {
-        responsive: true,
-		"language": {
+    </div>        
+    
+    <script language="javascript">
+      $(document).ready(function() {
+        var table = $('#myTable').DataTable( {
+            responsive: true,
+            "language": {
                 "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
                 "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
                 "infoEmpty": "Dữ liệu rỗng",
@@ -121,13 +123,13 @@ if (isset($_POST['btnDelete'])&&isset($_POST['checkbox']))
                     "first": "|<",
                     "last": ">|",
                     "next": ">>",
-                    "previous": ">>"
+                    "previous": "<<"
                 }
             },
-            "lengthMenu": [[ 5, 10, 15, 20, 25, 30, -1], [2, 5, 10, 15, 20, 25, 30, "Tất cả"]]
-    } );
-    // new $.fn.dataTable.FixedHeader( table );
-} );		
-    </script> 
+            "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "Tất cả"]]
+        } );
+        //new $.fn.dataTable.FixedHeader( table );
+    } );		
+</script>  
 </body>
 </html>
