@@ -52,7 +52,7 @@
                 <li><a href="?page=category">Quản lý danh mục sách</a></li>
                 <li><a href="?page=publisher">Quản lý nhà xuất bản</a></li>
                 <li><a href="?page=author">Quản lý tác giả</a></li>
-                <li><a href="#">Quản lý ngôn ngữ</a></li>
+                <li><a href="?page=lang">Quản lý ngôn ngữ</a></li>
                 <li><a href="#">Quản lý tác giả - sách</a></li>
                 <li><a href="#">Quản lý thông tin sách</a></li>
 
@@ -204,6 +204,19 @@ if(isset($_GET['page']))
     if($page=="updatecategory")
     {
       include_once("../src/category/editCategory.php");
+    }
+    //language
+    if($page=="lang")
+    {
+      include_once("../src/lang/Lang.php");
+    }
+    if($page=="addlang")
+    {
+      include_once("../src/lang/addLang.php");
+    }
+    if($page=="updatelang")
+    {
+      include_once("../src/lang/editLang.php");
     }
 
 
