@@ -50,7 +50,7 @@
             <li><a href="#Dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-bars"></i>Quản lý Sách</a>
             <ul id="Dropdown1" class="collapse list-unstyled ">
                 <li><a href="#">Quản lý danh mục sách</a></li>
-                <li><a href="#">Quản lý nhà xuất bản</a></li>
+                <li><a href="?page=publisher">Quản lý nhà xuất bản</a></li>
                 <li><a href="?page=author">Quản lý tác giả</a></li>
                 <li><a href="#">Quản lý ngôn ngữ</a></li>
                 <li><a href="#">Quản lý tác giả - sách</a></li>
@@ -179,7 +179,19 @@ if(isset($_GET['page']))
     {
       include_once("../src/author/editAuthor.php");
     }
-
+    //publisher
+    if($page=="publisher")
+    {
+      include_once("../src/publisher/Publisher.php");
+    }
+    if($page=="addpublisher")
+    {
+      include_once("../src/publisher/addPublisher.php");
+    }
+    if($page=="updatepublisher")
+    {
+      include_once("../src/publisher/editPublisher.php");
+    }
 
 }
 else
