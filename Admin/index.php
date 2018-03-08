@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+   
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="css/fontastic.css">
     <!-- Google fonts - Roboto -->
@@ -59,7 +58,7 @@
 
               </ul>
             </li>
-            <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
+            <li><a href="?page=lent"> <i class="icon-form"></i>Hình Thức Mượn                           </a></li>
             <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
             <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
@@ -201,5 +200,33 @@ else
     <script src="js/charts-home.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
+     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+      <script language="javascript">
+      $(document).ready(function() {
+        var table = $('#myTable').DataTable( {
+          responsive: true,
+          "language": {
+            "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
+            "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
+            "infoEmpty": "Dữ liệu rỗng",
+            "emptyTable": "Chưa có dữ liệu nào",
+            "processing": "Đang xử lý...",
+            "search": "Tìm kiếm:",
+            "loadingRecords": "Đang load dữ liệu...",
+            "zeroRecords": "không tìm thấy dữ liệu",
+            "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
+            "paginate": {
+              "first": "|<",
+              "last": ">|",
+              "next": ">>",
+              "previous": "<<"
+            }
+          },
+          "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "Tất cả"]]
+        } );
+        //new $.fn.dataTable.FixedHeader( table );
+    } );    
+</script>  
   </body>
 </html>
