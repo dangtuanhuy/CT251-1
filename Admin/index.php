@@ -297,6 +297,6 @@ else
 </script>  
 <script language="javascript">
                                       CKEDITOR.replace('txtDetails');
-                                    </script> 
+</script> 
   </body>
 </html>
