@@ -1,5 +1,5 @@
  <!-- Counts Section -->
- <section class="dashboard-counts section-padding">
+
         <div class="container-fluid">
           <div class="row">
             <!-- Count item widget-->
@@ -397,4 +397,4 @@
             </div>
           </div>
         </div>
-      </section>
+     
