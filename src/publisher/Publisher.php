@@ -61,7 +61,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 						<td><?php echo $row["PublisherId"] ?></td>
 						<td><?php echo $row["PublisherName"] ?></td>
 						<td align='center'>
-							<a class="btn btn-info" href="?page=puplisher&ma=<?php echo $row['PublisherId']; ?>" onclick="return deleteConfirm()">
+							<a class="btn btn-info" href="?page=publisher&ma=<?php echo $row['PublisherId']; ?>" onclick="return deleteConfirm()">
 								<i class="fa fa-remove"></i></a>
 							</td>
 							<td>
