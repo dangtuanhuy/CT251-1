@@ -51,7 +51,7 @@
             <ul id="Dropdown1" class="collapse list-unstyled ">
                 <li><a href="#">Quản lý danh mục sách</a></li>
                 <li><a href="#">Quản lý nhà xuất bản</a></li>
-                <li><a href="#">Quản lý tác giả</a></li>
+                <li><a href="?page=author">Quản lý tác giả</a></li>
                 <li><a href="#">Quản lý ngôn ngữ</a></li>
                 <li><a href="#">Quản lý tác giả - sách</a></li>
                 <li><a href="#">Quản lý thông tin sách</a></li>
@@ -166,6 +166,20 @@ if(isset($_GET['page']))
     {
       include_once("../src/lent/editLent.php");
     }
+    // author
+    if($page=="author")
+    {
+      include_once("../src/author/Author.php");
+    }
+    if($page=="addauthor")
+    {
+      include_once("../src/author/addAuthor.php");
+    }
+    if($page=="updateauthor")
+    {
+      include_once("../src/author/editAuthor.php");
+    }
+
 
 }
 else
