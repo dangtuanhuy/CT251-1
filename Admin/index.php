@@ -54,11 +54,12 @@
                 <li><a href="?page=author">Quản lý tác giả</a></li>
                 <li><a href="?page=lang">Quản lý ngôn ngữ</a></li>
                 <li><a href="#">Quản lý tác giả - sách</a></li>
-                <li><a href="#">Quản lý thông tin sách</a></li>
+                <li><a href="?page=lent">Phí Mượn</a></li>
+                <li><a href="?page=book">Quản lý thông tin sách</a></li>
 
               </ul>
             </li>
-            <li><a href="?page=lent"> <i class="icon-form"></i>Hình Thức Mượn                           </a></li>
+            <li><a href="#"> <i class="icon-form"></i>Tin Tức</a></li>
             <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
             <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
@@ -218,7 +219,19 @@ if(isset($_GET['page']))
     {
       include_once("../src/lang/editLang.php");
     }
-
+    //Book
+    if($page=="book")
+    {
+      include_once("../src/book/Book.php");
+    }
+    if($page=="addbook")
+    {
+      include_once("../src/book/addBook.php");
+    }
+    if($page=="updatebook")
+    {
+      include_once("../src/book/editBook.php");
+    }
 
 }
 else
