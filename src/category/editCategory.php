@@ -58,7 +58,7 @@ if(isset($_GET['ma'])){
 		else
 		{
 			mysqli_query($conn,"UPDATE `category` SET CategoryNames='$ten', CategoryDescription='$mota' where CategoryId=$ma");
-		echo '<meta http-equiv="refresh" content="0;URL=?page=updatecatagory"/>';
+		echo '<meta http-equiv="refresh" content="0;URL=?page=updatecategory"/>';
 		} 
 }
 ?>
