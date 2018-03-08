@@ -149,6 +149,29 @@
   <?php 
       include_once("../config/config.db.php");
   ?>
+  <?php 
+if(isset($_GET['page']))
+{
+  $page = $_GET['page'];
+    if($page=="lent")
+    {
+      include_once("../src/lent/Lent.php");
+    }
+    if($page=="addlent")
+    {
+      include_once("../src/lent/addLent.php");
+    }
+    if($page=="Updatelent")
+    {
+      include_once("../src/lent/editLent.php");
+    }
+
+}
+else
+{
+  include("statistical.php");
+}
+  ?>
  </section>
       <footer class="main-footer">
         <div class="container-fluid">
