@@ -28,6 +28,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 	}
 }
 ?>
+
 <div class="container">
 	<form name="frmXoa" method="post" action="">
 		<h1 class="text-center">DANH SÁCH SÁCH</h1>
@@ -68,6 +69,9 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 					ON b.PublisherId = p.PublisherId
 					JOIN language l
 					ON b.LanguageId = l.LanguageId
+					ORDER BY 
+					BookId
+
 					"
 				);
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))

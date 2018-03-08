@@ -258,6 +258,7 @@ else
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
     <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
     <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="vendor/chart.js/Chart.min.js"></script>
@@ -294,5 +295,8 @@ else
         //new $.fn.dataTable.FixedHeader( table );
     } );    
 </script>  
+<script language="javascript">
+                                      CKEDITOR.replace('txtDetails');
+                                    </script> 
   </body>
 </html>
