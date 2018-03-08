@@ -48,10 +48,13 @@
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="#Dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-bars"></i>Quản lý Sách</a>
             <ul id="Dropdown1" class="collapse list-unstyled ">
-                <li><a href="?page=category">Quản lý danh mục sách</a></li>
+                <li><a href="#">Quản lý danh mục sách</a></li>
                 <li><a href="#">Quản lý nhà xuất bản</a></li>
                 <li><a href="#">Quản lý tác giả</a></li>
-                <li><a href="#">Quản lý tác sách</a></li>
+                <li><a href="#">Quản lý ngôn ngữ</a></li>
+                <li><a href="#">Quản lý tác giả - sách</a></li>
+                <li><a href="#">Quản lý thông tin sách</a></li>
+
               </ul>
             </li>
             <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
