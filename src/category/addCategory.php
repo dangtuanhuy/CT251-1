@@ -1,6 +1,5 @@
 
 	<?php
-    include_once("connect.php");
     $name = "";
     $mota = "";
     if( isset($_POST["btnAdd"]))
@@ -9,12 +8,13 @@
         $mota = $_POST["txtMoTa"];
         $sqlinsert ="INSERT INTO `category`(`CategoryNames`,`CategoryDescription`) VALUES('$name','$mota')";
         mysqli_query($conn,$sqlinsert);
-        echo '<meta http-equiv="refresh" content="0;URL=?page=publisher"/>';
+        echo '<meta http-equiv="refresh" content="0;URL=?page=category"/>';
 
     }
 
 
 ?>
+<div class="container">
 	
 				<form method="post" class="">
 					<div class="form-group">
@@ -31,5 +31,5 @@
 					<input type="submit" class="btn btn-danger" name="btnAdd" value="Thêm Mới"/>
 					<input type="reset" name="btnReset" value="Nhập Lại" class="btn btn-info" />
 				</form>
-				
+				</div>
 	
