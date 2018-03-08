@@ -146,6 +146,9 @@
       </header>
 <!-- Counts Section -->
  <section class="dashboard-counts section-padding">
+  <?php 
+      include_once("../config/config.db.php");
+  ?>
  </section>
       <footer class="main-footer">
         <div class="container-fluid">
