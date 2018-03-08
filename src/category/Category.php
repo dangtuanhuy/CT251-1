@@ -31,7 +31,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 <div class="container">
 
 				<form name="frmXoa" method="post" action="">
-					<h1 class="text-center">DANH SÁCH SÁCH</h1>
+					<h1 class="text-center">DANH MỤC SÁCH</h1>
 					<p>
 						<a class="btn btn-info" href="?page=addcategory"><i class="fa fa-plane"></i></a>
 					</p>
@@ -40,7 +40,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 							<tr>
 								<th><strong>Chọn</strong></th>
 								<th><strong>STT</strong></th>
-								<th><strong>Tên Sách</strong></th>
+								<th><strong>DANH MỤC</strong></th>
 								<th class="col-md-4"><strong>Miêu Tả Sách</strong></th>
 								<th><strong>Xóa</strong></th>
 								<th><strong>Sửa</strong></th>
