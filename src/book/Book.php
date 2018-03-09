@@ -47,8 +47,8 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 					<th><strong>Loại Sách</strong></th>
 					<th><strong>Nhà Xuất Bản</strong></th>
 					<th><strong>Ngôn Ngữ</strong></th>
-					<th><strong>Sửa</strong></th>
 					<th><strong>Xóa</strong></th>
+					<th><strong>Sửa</strong></th>
 					<th><strong>Hình</strong></th>
 				</tr>
 			</thead>
