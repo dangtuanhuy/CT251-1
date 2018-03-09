@@ -14,6 +14,8 @@ function blindCategoryList($conn)
 	}
 	echo "</select>";
 }
+
+
 function blindPublisher($conn)
 {
 	$sqlSelect ="
@@ -27,6 +29,8 @@ function blindPublisher($conn)
 	}
 	echo "</select>";
 }
+
+
 function blindLanguage($conn)
 {
 	$sqlSelect ="
@@ -40,6 +44,8 @@ function blindLanguage($conn)
 	}
 	echo "</select>";
 }
+
+
 function blindLentCost($conn)
 {
 	$sqlSelect ="
@@ -66,7 +72,8 @@ $idCat = "";
 $idPub = "";
 $idLang = "";
 $idLent = "";
-if(isset($_POST["btnAdd"]))
+
+if (isset($_POST["btnAdd"]))
 {
 	$name = $_POST["txtSach"];
 	$price1 = $_POST["txtPrice1"];
@@ -78,58 +85,42 @@ if(isset($_POST["btnAdd"]))
 	$idPub = $_POST["slPublisher"];
 	$idLang = $_POST["slLanguage"];
 	$idLent = $_POST["slLentCost"];
-	if(trim($name=="")){
+	if (trim($name == "")):
 		echo "Vui lòng nhập tên tên sách";
-	}
-	elseif (trim($price1 = "")) {
-		# code...
+	elseif (trim($price1 = "")):
 		echo "Vui lòng nhập giá gốc của sách";
-	}
-	elseif (trim($details = "")) {
-		# code...
+	elseif (trim($details = "")):
 		echo "Vui lòng nhập mô tả nội dung chi tiết của sách";
-	}
-	elseif (trim($num = "")) {
-		# code...
+	elseif (trim($num = "")):
 		echo "Vui lòng nhập số lượng của sách";
-	}
-	elseif (trim($dateupdate="")) {
-		# code...
+	elseif (trim($dateupdate="")):
 		echo "Vui lòng chọn ngày cập nhật sách";
-	}
-	elseif (trim($timelent="")) {
+	elseif (trim($timelent="")):
 		# code...
 		echo "Vui lòng chọn thời hạn mượn";
-	}
-	else if(is_numeric($price1)){
+	elseif (is_numeric($price1)):
 		echo "Giá sản phẩm phải là kiểu số nguyên";
-	}
-	else if(is_numeric($num)){
+	elseif(is_numeric($num)):
 		echo "Số lượng của sản phẩm phải là kiểu số";
-	}
-	else if($idCat =="0"){
+	elseif($idCat =="0"):
 		echo "Vui lòng chọn loại sách";
-	}
-	else if($idPub =="0"){
+	elseif($idPub =="0"):
 		echo "Vui lòng chọn nhà xuất bản";
-	}
-	else if($idLang =="0"){
+	elseif($idLang =="0"):
 		echo "Vui lòng chọn ngôn ngữ sách";
-	}
-	else if($idLent =="0"){
+	elseif($idLent =="0"):
 		echo "Vui lòng chọn thời hạn mượn";
-	}
-	else
-	{
-		$sqlstring = "
-		INSERT INTO 
-		`book`(`BookNames`, `BookPrices`, `BookDescription`, `BookQuantity`, `BookUpdateDate`, `BookLentTimes`, `CategoryId`, `PublisherId`, `LanguageId`, `LentCostId`) 
-		VALUES('$name ','$price1','$details','$num','$dateupdate','$timelent','$idCat','$idPub ','$idLang','$idLent')";
+	else:
+		$sqlstring = "INSERT INTO `book` (`BookNames`, `BookPrices`, `BookDescription`, 
+		                                  `BookQuantity`, `BookUpdateDate`, `BookLentTimes`, 
+										  `CategoryId`, `PublisherId`, `LanguageId`, `LentCostId`) 
+		              VALUES ('$name ', '$price1', '$details', '$num', '$dateupdate', 
+					          '$timelent', '$idCat', '$idPub ', '$idLang', '$idLent')";
 
-		mysqli_query($conn, $sqlstring);
-		echo '<meta http-equiv="refresh" content="0;URL=?page=book"/>';
-		
-	}
+		// mysqli_query($conn, $sqlstring);
+		echo $sqlstring; // dùng để test câu lệnh sql, xóa bỏ sau khi fix xong.
+		// echo '<meta http-equiv="refresh" content="0;URL=?page=book"/>';
+	endif;
 }
 ?>
 
@@ -140,27 +131,27 @@ if(isset($_POST["btnAdd"]))
 		</div>
 		<div class="form-group">
 			<label for="txtSach">Tên Sách:</label>
-			<input type="text" class="form-control" id="txtSach" name="txtSach" placeholder="Tên sách" required="">
+			<input type="text" class="form-control" id="txtSach" name="txtSach" placeholder="Tên sách">
 		</div>
 		<div class="form-group">
 			<label for="txtPrice1">Giá Gốc: </label>
-			<input type="text" class="form-control" id="txtPrice1" name="txtPrice1" placeholder="VD: 80USD" required="">
+			<input type="text" class="form-control" id="txtPrice1" name="txtPrice1" placeholder="VD: 80USD">
 		</div>
 		<div>
 			<label for="txtDetails">Nội dung</label>
-			<textarea name="txtDetails" id="txtDetails" class="form-control" placeholder="VD: Chuyên viên Lập Trình IoT" required=""></textarea>
+			<textarea name="txtDetails" id="txtDetails" class="form-control" placeholder="VD: Chuyên viên Lập Trình IoT"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="txtNum">Số Lượng: </label>
-			<input type="text" class="form-control" id="txtNum" name="txtNum" placeholder="VD: 41" required="">
+			<input type="text" class="form-control" id="txtNum" name="txtNum" placeholder="VD: 41">
 		</div>
 		<div class="form-group">
 			<label for="txtDate">Ngày cập nhật: </label>
-			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 41" required="">
+			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 41">
 		</div>
 		<div class="form-group">
 			<label for="txtDeline">Thời hạn mượn: </label>
-			<input type="number" class="form-control" id="txtDeline" name="txtDeline" placeholder="VD: 2" required="">
+			<input type="number" class="form-control" id="txtDeline" name="txtDeline" placeholder="VD: 2">
 		</div>
 		<div class="form-group">
 			<label for="slCategory">Loại Sách: </label>
