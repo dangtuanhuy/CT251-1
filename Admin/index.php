@@ -233,7 +233,7 @@
                                     include_once("../src/book/editBook.php");
                                   }
     //Book-Author
-<<<<<<< HEAD
+
                                   if($page=="bookauthor")
                                   {
                                     include_once("../src/book-author/BookAuthor.php");
@@ -273,7 +273,7 @@
                                     }else{
                                       $row["Active"]= 0;
                                     }
-=======
+
     if($page=="bookauthor")
     {
       include_once("../src/book-author/BookAuthor.php");
@@ -308,7 +308,7 @@
       include_once("../src/user/User.php");
     }
 
->>>>>>> master
+
 
                                     $updateActive = "UPDATE `user` SET `Active`=".$row["Active"]." where `UserName` = '".$_GET['Username']."'";
                                     mysqli_query($conn,$updateActive);

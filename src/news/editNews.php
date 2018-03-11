@@ -1,14 +1,5 @@
 <?php 
-// $name = "";
-// $price1 = "";
-// $details = "";
-// $num = "";
-// $dateupdate = date_default_timezone_set('Asia/Vientiane');
-// $timelent = "";
-// $idCat = "";
-// $idPub = "";
-// $idLang = "";
-// $idLent = "";
+
 if(isset($_GET["ma"])){
 
 	$ma = $_GET["ma"];
