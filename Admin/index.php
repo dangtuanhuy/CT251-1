@@ -233,7 +233,6 @@
                                     include_once("../src/book/editBook.php");
                                   }
     //Book-Author
-
                                   if($page=="bookauthor")
                                   {
                                     include_once("../src/book-author/BookAuthor.php");
@@ -267,13 +266,7 @@
                                     include_once("../src/user/User.php");
                                   }
     // Status
-                                  if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
-                                    if($_GET["Active"] == 0){
-                                      $row["Active"]= 1;
-                                    }else{
-                                      $row["Active"]= 0;
-                                    }
-
+                                  
     if($page=="bookauthor")
     {
       include_once("../src/book-author/BookAuthor.php");
@@ -308,13 +301,21 @@
       include_once("../src/user/User.php");
     }
 
+//active
+if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
 
-
-                                    $updateActive = "UPDATE `user` SET `Active`=".$row["Active"]." where `UserName` = '".$_GET['Username']."'";
-                                    mysqli_query($conn,$updateActive);
-                                    echo "<script>window.location.href='?page=user'</script>";
+                if($_GET['Active'] == 0){
+                  $active = 1;
+                }
+                else{
+                  $active = 0;
+                }
+                $updateStatus = "UPDATE `user` SET `Active`=".$active." where `UserName` = '".$_GET['Username']."'";
+                mysqli_query($conn,$updateStatus);
+                echo "<script>window.location.href='?page=user'</script>";
+              }
+  
                                   }
-                                }
                                 else
                                 {
                                   include("statistical.php");
