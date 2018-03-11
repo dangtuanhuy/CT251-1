@@ -55,7 +55,7 @@
                 <li><a href="?page=lang">Quản lý ngôn ngữ</a></li>
                 <li><a href="?page=lent">Phí Mượn</a></li>
                 <li><a href="?page=book">Quản lý thông tin sách</a></li>
-
+                <li><a href="?page=bookauthor">Quản lý sách - tác giả</a></li>
               </ul>
             </li>
             <li><a href="#"> <i class="icon-form"></i>Tin Tức</a></li>
@@ -222,6 +222,19 @@ if(isset($_GET['page']))
     if($page=="book")
     {
       include_once("../src/book/Book.php");
+    }
+    if($page=="addbook")
+    {
+      include_once("../src/book/addBook.php");
+    }
+    if($page=="updatebook")
+    {
+      include_once("../src/book/editBook.php");
+    }
+    //Book-Author
+    if($page=="bookauthor")
+    {
+      include_once("../src/book-author/BookAuthor.php");
     }
     if($page=="addbook")
     {
