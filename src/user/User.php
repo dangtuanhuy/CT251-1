@@ -25,8 +25,9 @@ function updateUserAdmin($active)
 					<th><strong>Số điện thoại</strong></th>
 					<th><strong>Email</strong></th>
 					<th><strong>Ngày hết hạn</strong></th>
-					<th><strong>Mail</strong></th>
+					<th><strong>Kích Hoạt Mail</strong></th>
 					<th><strong>Trạng thái</strong></th>
+					<th><strong>Quyền</strong></th>
 				</tr>
 			</thead>
 
@@ -46,16 +47,7 @@ function updateUserAdmin($active)
 									<td><?php echo $row["Phone"] ?></td>
 									<td><?php echo $row["Email"] ?></td>
 									<td><?php echo $row["ExpriredDate"] ?></td>
-									<td class="col-md-6">
-										<?php 
-										if($row["Active"]==1){
-											echo 'Đã kích hoạt';
-										}else{
-											echo 'Chưa kích hoạt';
-										}
-										?>
-
-									</td>
+								
 									<td class="col-md-6" >
 										<form  method="post" action="">
 											<?php 
@@ -65,7 +57,8 @@ function updateUserAdmin($active)
 												echo '<a class="btn btn-primary" href="?page=ActiveUser&Status='.$row["Active"].'&Username='.$row["Username"].'">Mở</a>';
 											}
 					?>
-									<td><?php echo $row["Status"] ?></td>
+					<td><?php echo $row["Status"] ?></td>
+									<td><?php echo $row["Role"] ?></td>
 									</tr>
 									<?php
 									$stt++;

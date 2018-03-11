@@ -44,7 +44,7 @@ if(isset($_POST["btnCapNhat"])){
 	
 	$sqlstring="UPDATE `news` SET 
 	Title='".$title."',
-	NewsDate = '".$newsdate ."',
+	NewsDate = '".$newsdate."',
 	BNewsNames = '".$newsname ."',
 	NewsContent = '".$newscontent."',
 	Username = '".$idUser."',
@@ -60,20 +60,20 @@ if(isset($_POST["btnCapNhat"])){
 		</div>
 		<div class="form-group">
 			<label for="txtTiTle">Tựa Đề:</label>
-			<input type="text" class="form-control" id="txtTiTle" name="txtTiTle" placeholder="Tựa Đề">
+			<input type="text" class="form-control" id="txtTiTle" name="txtTiTle" placeholder="Tựa Đề" value='<?php echo $title; ?>'>
 		</div>
 		<div class="form-group">
 			<label for="txtDate">Ngày Cập Nhật: </label>
-			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 23/3/2099">
+			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 23/3/2099" value='<?php echo $newsdate; ?>'>
 		</div>
 		<div>
 			<label for="txtTinTuc">Tên Tin Tức</label>
 			
-			<input type="text" class="form-control" id="txtTinTuc" name="txtTinTuc"/>
+			<input type="text" class="form-control" id="txtTinTuc" name="txtTinTuc" value='<?php echo $newsname; ?>'/>
 		</div>
 		<div class="form-group">
 			<label for="txtNoidung">Nội dung: </label>
-			<textarea class="form-control" id="txtDetails" name="txtDetails" placeholder="VD: 41"></textarea>
+			<textarea class="form-control" id="txtDetails" name="txtDetails" placeholder="VD: 41" value='<?php echo $newscontent; ?>'></textarea>
 		</div>
 		<div class="form-group">
 			<label for="txtDeline">Người đăng tin: </label>
