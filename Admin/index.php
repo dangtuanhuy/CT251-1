@@ -233,6 +233,7 @@
                                     include_once("../src/book/editBook.php");
                                   }
     //Book-Author
+<<<<<<< HEAD
                                   if($page=="bookauthor")
                                   {
                                     include_once("../src/book-author/BookAuthor.php");
@@ -272,6 +273,42 @@
                                     }else{
                                       $row["Active"]= 0;
                                     }
+=======
+    if($page=="bookauthor")
+    {
+      include_once("../src/book-author/BookAuthor.php");
+    }
+    if($page=="addbook")
+    {
+      include_once("../src/book/addBook.php");
+    }
+    if($page=="updatebook")
+    {
+      include_once("../src/book/editBook.php");
+    }
+
+    //News
+    if($page=="news")
+    {
+      include_once("../src/news/News.php");
+    }
+    if($page=="addnews")
+    {
+      include_once("../src/news/addNews.php");
+    }
+    if($page=="updatenews")
+    {
+      include_once("../src/news/editNews.php");
+    }
+    
+
+    //User
+    if($page=="user")
+    {
+      include_once("../src/user/User.php");
+    }
+
+>>>>>>> master
 
                                     $updateActive = "UPDATE `user` SET `Active`=".$row["Active"]." where `UserName` = '".$_GET['Username']."'";
                                     mysqli_query($conn,$updateActive);

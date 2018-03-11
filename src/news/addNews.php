@@ -8,7 +8,7 @@ function blindUserList($conn)
 	<option value='0'>Người Cập Nhật Tin Tức</option>";
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		echo "
-		<option value='".$row['Username']."'>".$row['Username']."</option>";
+		<option value='".$row['Username']."'>".$row['DisplayName']."</option>";
 	}
 	echo "</select>";
 }
