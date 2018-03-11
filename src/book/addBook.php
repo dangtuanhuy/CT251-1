@@ -85,42 +85,17 @@ if (isset($_POST["btnAdd"]))
 	$idPub = $_POST["slPublisher"];
 	$idLang = $_POST["slLanguage"];
 	$idLent = $_POST["slLentCost"];
-	if (trim($name == "")):
-		echo "Vui lòng nhập tên tên sách";
-	elseif (trim($price1 = "")):
-		echo "Vui lòng nhập giá gốc của sách";
-	elseif (trim($details = "")):
-		echo "Vui lòng nhập mô tả nội dung chi tiết của sách";
-	elseif (trim($num = "")):
-		echo "Vui lòng nhập số lượng của sách";
-	elseif (trim($dateupdate="")):
-		echo "Vui lòng chọn ngày cập nhật sách";
-	elseif (trim($timelent="")):
-		# code...
-		echo "Vui lòng chọn thời hạn mượn";
-	elseif (is_numeric($price1)):
-		echo "Giá sản phẩm phải là kiểu số nguyên";
-	elseif(is_numeric($num)):
-		echo "Số lượng của sản phẩm phải là kiểu số";
-	elseif($idCat =="0"):
-		echo "Vui lòng chọn loại sách";
-	elseif($idPub =="0"):
-		echo "Vui lòng chọn nhà xuất bản";
-	elseif($idLang =="0"):
-		echo "Vui lòng chọn ngôn ngữ sách";
-	elseif($idLent =="0"):
-		echo "Vui lòng chọn thời hạn mượn";
-	else:
+	
 		$sqlstring = "INSERT INTO `book` (`BookNames`, `BookPrices`, `BookDescription`, 
 		                                  `BookQuantity`, `BookUpdateDate`, `BookLentTimes`, 
 										  `CategoryId`, `PublisherId`, `LanguageId`, `LentCostId`) 
 		              VALUES ('$name ', '$price1', '$details', '$num', '$dateupdate', 
 					          '$timelent', '$idCat', '$idPub ', '$idLang', '$idLent')";
 
-		// mysqli_query($conn, $sqlstring);
-		echo $sqlstring; // dùng để test câu lệnh sql, xóa bỏ sau khi fix xong.
-		// echo '<meta http-equiv="refresh" content="0;URL=?page=book"/>';
-	endif;
+		mysqli_query($conn, $sqlstring);
+		// echo $sqlstring; // dùng để test câu lệnh sql, xóa bỏ sau khi fix xong.
+		echo '<meta http-equiv="refresh" content="0;URL=?page=book"/>';
+	
 }
 ?>
 
