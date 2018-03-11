@@ -14,8 +14,31 @@ function blindUserList($conn)
 }
 ?>
 <?php 
+$title = "";
+$newsdate = date_default_timezone_set('Asia/Vientiane');
+$newsname = "";
+$newscontent = "";
+$idUser= "";
 
+if (isset($_POST["btnAdd"]))
+{
+	$title = $_POST["txtTiTle"];
+	$newsdate  = date('Y-m-d',  strtotime($_POST['txtDate']));
+	$newsname = $_POST["txtTinTuc"];
+	$newscontent = $_POST["txtDetails"];
+	$idUser = $_POST["slUser"];
+	
+		$sqlstring = "INSERT INTO `news`(`Title`, `NewsDate`, `NewsNames`, `NewsContent`, `Username`) 
+		VALUES  ('$title', '$newsdate', '$newsname','$newscontent', 
+					           '$idUser')";
+
+		mysqli_query($conn, $sqlstring);
+		// echo $sqlstring; // dùng để test câu lệnh sql, xóa bỏ sau khi fix xong.
+		echo '<meta http-equiv="refresh" content="0;URL=?page=news"/>';
+	
+}
 ?>
+
 <div class="container">
 	<form method="post" class="">
 		<div class="form-group">
@@ -31,11 +54,12 @@ function blindUserList($conn)
 		</div>
 		<div>
 			<label for="txtTinTuc">Tên Tin Tức</label>
-			<textarea name="txtTinTuc" id="txtTinTuc" class="form-control" placeholder="VD: Tin Cuối Ngày"></textarea>
+			
+			<input type="text" class="form-control" id="txtTinTuc" name="txtTinTuc"/>
 		</div>
 		<div class="form-group">
 			<label for="txtNoidung">Nội dung: </label>
-			<input type="text" class="form-control" id="txtNoidung" name="txtNoidung" placeholder="VD: 41">
+			<textarea class="form-control" id="txtDetails" name="txtDetails" placeholder="VD: 41"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="txtDeline">Người đăng tin: </label>
