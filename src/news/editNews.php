@@ -4,113 +4,53 @@ if(isset($_GET["ma"])){
 
 	$ma = $_GET["ma"];
 	
-	$sqlstring = "SELECT BookNames,BookPrices,BookDescription,BookQuantity,BookUpdateDate,BookLentTimes,
-	CategoryId,PublisherId,LanguageId,LentCostId FROM `book` where BookId=".$ma;
+	$sqlstring = "SELECT`Title`, `NewsDate`, `NewsNames`, `NewsContent`, `Username` FROM `news` WHERE NewsId=".$ma;
 	$result = mysqli_query($conn, $sqlstring);
 	$row = mysqli_fetch_row($result);
-	$name = $row['0'];
-	$price1 = $row['1'];
-	$details  = $row['2'];
-	$num = $row['3'];
-	$dateupdate = $row['4'];
-	$timelent= $row['5'];
-	$idCat = $row['6'];
-	$idPub = $row['7'];
-	$idLang  = $row['8'];
-	$idLent = $row['9'];
+	$title = $row['0'];
+	$newsdate= $row['1'];
+	$newsname = $row['2'];
+	$newscontent= $row['3'];
+	$idUser = $row['4'];
+	
 }
 else
 {
-	echo '<meta http-equiv="refresh" content="0;URL=?page=book"/>';
+	echo '<meta http-equiv="refresh" content="0;URL=?page=news"/>';
 }
-function bindUpdateCategory($conn, $selectedValue) {
-	$sqlstring = "SELECT * FROM book
-	INNER JOIN category on book.BookId = category.CategoryId";
+function bindUpdateUser($conn, $selectedValue) {
+	$sqlstring = "SELECT * FROM news
+	INNER JOIN user on news.NewsId = user.Username";
 	$result = mysqli_query($conn, $sqlstring);
-	echo "<select name='slCategory' class='form-control'>
-	<option value='0'>Chọn loại sách</option>";
+	echo "<select name='slUser' class='form-control'>
+	<option value='0'>Vui lòng chọn người đăng tin</option>";
 	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		if ($row['CategoryId'] == $selectedValue) {
-			echo "<option value='" . $row['CategoryId']."' selected>".$row['CategoryNames']."</option>";
+		if ($row['Username'] == $selectedValue) {
+			echo "<option value='" . $row['Username']."' selected>".$row['DisplayName']."</option>";
 		} 
 		else {
-			echo "<option value='".$row['CategoryId']."'>".$row['CategoryNames']."</option>";
+			echo "<option value='".$row['Username']."'>".$row['DisplayName']."</option>";
 		}
 	}
 	echo "</select>";
 }
-function bindUpdatePublisher($conn, $selectedValue) {
-	$sqlstring = "SELECT * FROM book
-				INNER JOIN publisher ON book.BookId = publisher.PublisherId";
-	$result = mysqli_query($conn, $sqlstring);
-	echo "<select name='slPublisher'class='form-control'>
-	<option value='0'>Chọn loại nhà xuất bản</option>";
-	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		if ($row['PublisherId'] == $selectedValue) {
-			echo "<option value='" . $row['PublisherId']."' selected>".$row['PublisherName']."</option>";
-		} 
-		else {
-			echo "<option value='".$row['PublisherId']."'>".$row['PublisherName']."</option>";
-		}
-	}
-	echo "</select>";
-}
-function bindUpdateLanguage($conn, $selectedValue) {
-	$sqlstring = "SELECT * FROM book
-				INNER JOIN language ON book.BookId = language.LanguageId";
-	$result = mysqli_query($conn, $sqlstring);
-	echo "<select name='slLang' class='form-control'>
-	<option value='0'>Chọn loại sản phẩm</option>";
-	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		if ($row['LanguageId'] == $selectedValue) {
-			echo "<option value='" . $row['LanguageId']."' selected>".$row['LaguageName']."</option>";
-		} 
-		else {
-			echo "<option value='".$row['LanguageId']."'>".$row['LaguageName']."</option>";
-		}
-	}
-	echo "</select>";
-}
-function bindUpdateLentCost($conn, $selectedValue) {
-	$sqlstring = "SELECT * FROM book
-				INNER JOIN lendcost ON book.BookId = lendcost.LentCostId";
-	$result = mysqli_query($conn, $sqlstring);
-	echo "<select name='slCost'class='form-control'>
-	<option value='0'>Chọn giá cho thuê</option>";
-	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		if ($row['LentCostId'] == $selectedValue) {
-			echo "<option value='" . $row['LentCostId']."' selected>".$row['LentCost']."</option>";
-		} 
-		else {
-			echo "<option value='".$row['LentCostId']."'>".$row['LentCost']."</option>";
-		}
-	}
-	echo "</select>";
-}
+
 if(isset($_POST["btnCapNhat"])){
-	$name = $_POST["txtSach"];
-	$price1 = $_POST["txtPrice1"];
-	$details = $_POST["txtDetails"];
-	$num = $_POST["txtNum"];
-	$dateupdate = date('Y-m-d',  strtotime($_POST['txtDate']));
-	$timelent = $_POST["txtDeline"];
-	$idCat = $_POST["slCategory"];
-	$idPub = $_POST["slPublisher"];
-	$idLang = $_POST["slLang"];
-	$idLent = $_POST["slCost"];
-	$sqlstring="UPDATE `book` SET 
-	BookNames='".$name."',
-	BookPrices = '".$price1."',
-	BookDescription = '".$details."',
-	BookQuantity = '".$num."',
-	BookUpdateDate = '".$dateupdate."',
-	BookLentTimes = '".$timelent."',
-	CategoryId = '".$idCat."',
-	PublisherId = '".$idPub."',
-	LanguageId = '".$idLang."',
-	LentCostId = '".$idLent."' WHERE BookId=".$ma;
+	$title = $_POST["txtTiTle"];
+	$newsdate  = date('Y-m-d',  strtotime($_POST['txtDate']));
+	$newsname = $_POST["txtTinTuc"];
+	$newscontent = $_POST["txtDetails"];
+	$idUser = $_POST["slUser"];
+	
+	$sqlstring="UPDATE `news` SET 
+	Title='".$title."',
+	NewsDate = '".$newsdate ."',
+	BNewsNames = '".$newsname ."',
+	NewsContent = '".$newscontent."',
+	Username = '".$idUser."',
+	WHERE NewsId=".$ma;
 	mysqli_query($conn,$sqlstring);
-			echo '<meta http-equiv="refresh" content="0;URL=?page=book"/>';
+			echo '<meta http-equiv="refresh" content="0;URL=?page=news"/>';
 	}
 ?>
 <div class="container">
@@ -137,10 +77,10 @@ if(isset($_POST["btnCapNhat"])){
 		</div>
 		<div class="form-group">
 			<label for="txtDeline">Người đăng tin: </label>
-			<?php blindUserList($conn) ?>
+			<?php bindUpdateUser($conn, $idUser ) ?>
 		</div>
 		
-		<input type="submit" class="btn btn-danger" name="btnAdd" value="Thêm Mới"/>
+		<input type="submit" class="btn btn-danger" name="btnCapNhat" value="Cập Nhật"/>
 		<input type="reset" name="btnReset" value="Nhập Lại" class="btn btn-info" />
 	</form>
 
