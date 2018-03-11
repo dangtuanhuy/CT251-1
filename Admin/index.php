@@ -58,7 +58,7 @@
                 <li><a href="?page=bookauthor">Quản lý sách - tác giả</a></li>
               </ul>
             </li>
-            <li><a href="#"> <i class="icon-form"></i>Tin Tức</a></li>
+            <li><a href="?page=news"> <i class="icon-form"></i>Tin Tức</a></li>
             <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
             <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
@@ -244,6 +244,20 @@ if(isset($_GET['page']))
     {
       include_once("../src/book/editBook.php");
     }
+    //News
+    if($page=="news")
+    {
+      include_once("../src/news/News.php");
+    }
+    if($page=="addnews")
+    {
+      include_once("../src/news/addNews.php");
+    }
+    if($page=="updatenews")
+    {
+      include_once("../src/news/editNews.php");
+    }
+    
 
 }
 else
