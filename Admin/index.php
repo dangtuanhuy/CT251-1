@@ -245,7 +245,7 @@ if(isset($_GET['page']))
     {
       include_once("../src/book/editBook.php");
     }
-<<<<<<< Updated upstream
+
     //News
     if($page=="news")
     {
@@ -260,13 +260,13 @@ if(isset($_GET['page']))
       include_once("../src/news/editNews.php");
     }
     
-=======
+
     //User
     if($page=="user")
     {
       include_once("../src/user/User.php");
     }
->>>>>>> Stashed changes
+
 
 }
 else
