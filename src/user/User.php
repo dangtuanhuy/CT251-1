@@ -1,4 +1,13 @@
+<?php 
+function updateUserAdmin($active)
+{
+	$updateUserAdmin = "UPDATE user
+	SET `Active` = '$active'
+	WHERE 	Username = '$username' ";
+	mysqli_query($conn,$updateUserAdmin);
 
+}
+?>
 <div class="container">
 	<form name="frmXoa" method="post" action="">
 		<h1 class="text-center">DANH SÁCH SÁCH</h1>
@@ -16,8 +25,8 @@
 					<th><strong>Số điện thoại</strong></th>
 					<th><strong>Email</strong></th>
 					<th><strong>Ngày hết hạn</strong></th>
-					<th><strong>Active</strong></th>
-					<th><strong>Status</strong></th>
+					<th><strong>Mail</strong></th>
+					<th><strong>Trạng thái</strong></th>
 				</tr>
 			</thead>
 
@@ -37,10 +46,9 @@
 									<td><?php echo $row["Phone"] ?></td>
 									<td><?php echo $row["Email"] ?></td>
 									<td><?php echo $row["ExpriredDate"] ?></td>
-									<td><?php echo $row["Active"] ?></td>
 									<td class="col-md-6">
 										<?php 
-										if($Active==1){
+										if($row["Active"]==1){
 											echo 'Đã kích hoạt';
 										}else{
 											echo 'Chưa kích hoạt';
@@ -51,10 +59,10 @@
 									<td class="col-md-6" >
 										<form  method="post" action="">
 											<?php 
-											if($Active==1){
-												echo '<a class="btn btn-danger" href="?page=ActiveUser&Status='.$Active.'&UserId='.$UserId.'">Đóng</a>';
+											if($row["Active"]==1){
+												echo '<a class="btn btn-danger" href="?page=ActiveUser&Status='.$row["Active"].'&Username='.$row["Username"].'">Đóng</a>';
 											}else{
-												echo '<a class="btn btn-primary" href="?page=ActiveUser&Status='.$Active.'&UserId='.$UserId.'">Mở</a>';
+												echo '<a class="btn btn-primary" href="?page=ActiveUser&Status='.$row["Active"].'&Username='.$row["Username"].'">Mở</a>';
 											}
 					?>
 									<td><?php echo $row["Status"] ?></td>
