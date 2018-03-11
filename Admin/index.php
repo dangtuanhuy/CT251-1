@@ -53,7 +53,6 @@
                 <li><a href="?page=publisher">Quản lý nhà xuất bản</a></li>
                 <li><a href="?page=author">Quản lý tác giả</a></li>
                 <li><a href="?page=lang">Quản lý ngôn ngữ</a></li>
-                <li><a href="#">Quản lý tác giả - sách</a></li>
                 <li><a href="?page=lent">Phí Mượn</a></li>
                 <li><a href="?page=book">Quản lý thông tin sách</a></li>
 
