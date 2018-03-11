@@ -50,6 +50,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 					<th><strong>Xóa</strong></th>
 					<th><strong>Sửa</strong></th>
 					<th><strong>Hình</strong></th>
+					<th><strong>Tác Giả</strong></th>
 				</tr>
 			</thead>
 
@@ -93,6 +94,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 							</td>
 							<td><a class="btn btn-primary" href="?page=updatebook&ma=<?php echo $row['BookId']; ?>"><i class="fa fa-pencil-square-o"></i></a></td>
 							<td><a class="btn btn-secondary" href="#"><i class="fa fa-picture-o"></i></a></td>
+							<td><a class="btn btn-secondary" href="#"><i class="fa fa-book"></i></a></td>
 						</tr>
 						<?php
 						$stt++;
