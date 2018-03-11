@@ -167,7 +167,7 @@ if(isset($_POST["btnCapNhat"])){
 			<label for="slLentCost">Giá Cho Thuê: </label>
 			<?php bindUpdateLentCost($conn, $idLent) ?>
 		</div>
-		<input type="submit" class="btn btn-danger" name="btnUpdate" value="Cập Nhật"/>
+		<input type="submit" class="btn btn-danger" name="btnCapNhat" value="Cập Nhật"/>
 		<input type="reset" name="btnReset" value="Nhập Lại" class="btn btn-info" />
 	</form>
 
