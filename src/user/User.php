@@ -1,3 +1,4 @@
+
 <div class="container">
 	<form name="frmXoa" method="post" action="">
 		<h1 class="text-center">DANH SÁCH SÁCH</h1>
@@ -45,7 +46,7 @@
 											echo 'Chưa kích hoạt';
 										}
 										?>
-										
+
 									</td>
 									<td class="col-md-6" >
 										<form  method="post" action="">
@@ -56,7 +57,7 @@
 												echo '<a class="btn btn-primary" href="?page=ActiveUser&Status='.$Active.'&UserId='.$UserId.'">Mở</a>';
 											}
 					?>
-									<td><?php echo $row["Active"] ?></td>
+									<td><?php echo $row["Status"] ?></td>
 									</tr>
 									<?php
 									$stt++;
