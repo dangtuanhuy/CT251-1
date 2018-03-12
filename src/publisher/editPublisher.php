@@ -9,7 +9,7 @@ if(isset($_GET['ma'])){
 	?>
 	<?php 
 	if(isset($_POST["btnCapNhat"])){
-		$details=$_POST['txtDetails'];
+		$details=$_POST['txtDetails1'];
 		
 		$loi="";
 		if($details=="") $loi.="<li>Vui lòng nhập tên nhà xuất bản</li>";
@@ -28,7 +28,7 @@ if(isset($_GET['ma'])){
 		<div class="form-group">
 			<label for="txtDetails" class="col-sm-2 control-label">Tên Nhà Xuất Bản(*):  </label>
 			<div class="col-sm-10">
-				<input type="text" name="txtDetails" id="txtDetails" class="form-control" placeholder="VD: Dân Trí" value='<?php echo $details; ?>'>
+				<input type="text" name="txtDetails1" id="txtDetails1" class="form-control" placeholder="VD: Dân Trí" value='<?php echo $details; ?>'>
 			</div>
 		</div>
 			<div class="col-sm-offset-2 col-sm-10">
