@@ -58,23 +58,14 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 				<?php 
 				$stt=1;
 				$result = mysqli_query($conn,
-					"
-					SELECT 
-					BookId,BookNames, BookPrices, BookDescription,
-					BookQuantity,CategoryNames, PublisherName, 
-					LaguageName
-					FROM book b
-					JOIN category c
-					ON b.CategoryId = c.CategoryId
-					JOIN publisher p
-					ON b.PublisherId = p.PublisherId
-					JOIN language l
-					ON b.LanguageId = l.LanguageId
-					ORDER BY 
-					BookId
-
-					"
-				);
+					"SELECT BookId,BookNames, BookPrices, BookDescription,
+					        BookQuantity,CategoryNames, PublisherName, LaguageName
+					 FROM book b
+					 JOIN category c ON b.CategoryId = c.CategoryId
+					 JOIN publisher p ON b.PublisherId = p.PublisherId
+					 JOIN language l ON b.LanguageId = l.LanguageId
+					 ORDER BY BookId"
+					 );
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 				{
 					?>

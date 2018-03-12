@@ -1,8 +1,15 @@
 <div class="col">
     <div class="container-fluid">
-        <div class="row pt-4">
+        <div class="row pt-2">
+            <div class="col">
+                <div class="alert alert-success text-danger" style="min-width: 100%;" role="alert">
+                    <marquee>Tài khoản của bạn đã hết hạn. Vui lòng gia hạn thêm.</marquee>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-2">
             <!-- Random Article -->
-            <div class="col-8">
+            <div class="col-8 d-md-none d-lg-block">
                 <div class="media">
                     <img class="mr-3 rounded" src="http://bit.ly/2AX9mTF" style="max-width: 200px;" alt="Generic placeholder image">
                     <div class="media-body">

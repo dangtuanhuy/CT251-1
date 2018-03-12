@@ -26,7 +26,7 @@
                     <p class="mb-0"><i class="fa fa-list"></i></p>
                     <p class="nav-link-text">Danh mục</p>
                 </a>
-                <a class="nav-link text-center" href="#">
+                <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/list-book.php'?>">
                     <p class="mb-0"><i class="fa fa-th-large"></i></p>
                     <p class="nav-link-text">Danh sách</p>
                 </a>
