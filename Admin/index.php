@@ -294,7 +294,11 @@
       include_once("../src/news/editNews.php");
     }
     
-
+    //Feedback
+    if($page=="feedback")
+    {
+      include_once("../src/feedback/feedback.php");
+    }
     //User
     if($page=="user")
     {
