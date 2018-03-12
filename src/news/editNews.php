@@ -37,7 +37,7 @@ function bindUpdateUser($conn, $selectedValue) {
 
 if(isset($_POST["btnCapNhat"])){
 	$title = $_POST["txtTiTle"];
-	$newsdate  = date('Y-m-d',  strtotime($_POST['txtDate']));
+	$newsdate = date('Y-m-d',  strtotime($_POST['txtDate']));
 	$newsname = $_POST["txtTinTuc"];
 	$newscontent = $_POST["txtDetails"];
 	$idUser = $_POST["slUser"];
@@ -63,8 +63,8 @@ if(isset($_POST["btnCapNhat"])){
 			<input type="text" class="form-control" id="txtTiTle" name="txtTiTle" placeholder="Tựa Đề" value='<?php echo $title; ?>'>
 		</div>
 		<div class="form-group">
-			<label for="txtDate">Ngày Cập Nhật: </label>
-			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 23/3/2099" value='<?php echo $newsdate; ?>'>
+			<label for="txtDate">Ngày cập nhật: </label>
+			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 41" required="" value='<?php echo $dateupdate; ?>'>
 		</div>
 		<div>
 			<label for="txtTinTuc">Tên Tin Tức</label>
