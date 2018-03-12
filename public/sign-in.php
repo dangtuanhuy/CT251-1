@@ -6,60 +6,207 @@ include ROOT_PATH.'/config/config.db.php';
 ?>
 
 <?php include TEMPLATES_PATH.'/header.php' ?>
-
+<?php 
+    $name = "";
+    $pass = "";
+    $display ="";
+    $birthday = date_default_timezone_set('Asia/Vientiane');
+    $address = "";
+    $numphone = "";
+    $emails = "";
+    $sex = "";
+    if(isset($_POST["btnRegister"]))
+    {
+        $name = $_POST["txtUsername"];
+        $pass = $_POST["txtPassword"];
+        $display = $_POST["txtDisplay"];
+        $birthday = date('Y-m-d',  strtotime($_POST['txtDate']));
+        $address = $_POST["txtAddress"];
+    }
+?>
 <div class="col" >
-    <div class="container-fluid">
-        <div class="row" style="width: 100%;">
-            <div class="col-6">
-                <div class="card mt-5" style="border:none;">
-                    <div class="card-header text-center">
-                        Đăng nhập
-                    </div>
-                    <div class="card-body">
-                    <form class="mt-3" method="POST" action="sign-in.php">
-                        <div class="form-group">
-                            <label for="fgUsername">Username</label>
-                            <input name="username" type="text" class="form-control" id="fgUsername" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label for="fgPassword">Password</label>
-                            <input name="password" type="password" class="form-control" id="fgPassword" placeholder="Password">
-                        </div>
-                        <div class="text-right">
-                            <button class="btn btn-primary index-label" type="submit">Đăng nhập</button>
-                        </div>
-                    </form>
+<div class="container">
+    <form class="form-horizontal" role="form" method="POST" action="#">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2 class="text-center">Register</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtUsername">Tên Đăng Nhập:</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input type="text" name="txtUsername" class="form-control" id="txtUsername"
+                               placeholder="Enter Your Username" required autofocus>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card mt-5" style="border:none;">
-                    <div class="card-header text-center">
-                        Đăng ký
-                    </div>
-                    <div class="card-body">
-                    <form class="mt-3" method="POST" action="sign-in.php">
-                        <div class="form-group">
-                            <label for="fgUsername">Username</label>
-                            <input name="username" type="text" class="form-control" id="fgUsername" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label for="fgEmail">Email</label>
-                            <input name="email" type="text" class="form-control" id="fgEmail" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="fgPassword">Password</label>
-                            <input name="password" type="password" class="form-control" id="fgPassword" placeholder="Password">
-                        </div>
-                        <div class="text-right">
-                            <button class="btn btn-primary index-label" type="submit">Đăng ký</button>
-                        </div>
-                    </form>
-                    </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtPassword">Mật Khẩu: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input type="password" name="txtPassword" class="form-control" id="txtPassword"
+                               placeholder="Enter your Password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtDisplay">Tên Hiển Thị: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book"></i></div>
+                        <input type="text" name="txtDisplay" class="form-control" id="txtDisplay"
+                               placeholder="Enter your Display name" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtDate">Ngày sinh: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0"></div>
+                        <input type="date" name="txtDate" class="form-control" id="txtDate"
+                                required>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="rd">Giới Tính: </label>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0"></div>
+                        <input type="radio" name="rd" class="form-control" id="txtBoy" >Nam
+                        <input type="radio" name="rd" class="form-control" id="txtGirl">Nữ
+                        
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtAddress">Địa chỉ: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0"></div>
+                        
+                                <textarea name="txtAddress" class="form-control" id="txtAddress"></textarea>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtEmail">Email: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-book"></i></div>
+                        <input type="email" name="txtEmail" class="form-control" id="txtEmail"
+                               placeholder="Enter your Email" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtPhone">Số điện Thoại: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
+                        <input type="tel" name="txtPhone" class="form-control" id="txtPhone"
+                               placeholder="Enter your Phone" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success"><i class="fa fa-user-plus" name="btnRegister"></i> Register</button>
+            </div>
+        </div>
+    </form>
+</div>
 </div>
 
 <?php include TEMPLATES_PATH.'/_footer.php' ?>
