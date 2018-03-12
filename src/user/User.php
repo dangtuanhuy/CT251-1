@@ -58,14 +58,15 @@ function updateUserAdmin($active)
                                                 echo '<a class="btn btn-primary" href="?page=ActiveUser&Active='.$row["Active"].'&Username='.$row["Username"].'">Mở</a>';
                                             }
                     ?>
+                   
                                     <td class="col-md-6" >
                                                         <form  method="post" action="">
                                                             <?php 
                                                             if ($row["Status"] == 1){
-                                                                echo '<a class="btn btn-danger" href="?page=ActiveUser&Status='.$row["Status"].'&Username='.$row["Username"].'">Đóng</a>';
+                                                                echo '<a class="btn btn-danger" href="?page=ActiveUser1&Status='.$row["Status"].'&Username='.$row["Username"].'">Đóng</a>';
                                                             }
                                                             else {
-                                                                echo '<a class="btn btn-primary" href="?page=ActiveUser&Status='.$row["Status"].'&Username='.$row["Username"].'">Mở</a>';
+                                                                echo '<a class="btn btn-primary" href="?page=ActiveUser1&Status='.$row["Status"].'&Username='.$row["Username"].'">Mở</a>';
                                                             }
                                     ?>
                                     <td><?php echo $row["Role"] ?></td>

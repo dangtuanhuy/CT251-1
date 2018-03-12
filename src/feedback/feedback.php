@@ -28,10 +28,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 ?>
 <div class="container">
 <form name="frmXoa" method="post" action="">
-	<h1 class="text-center">DANH SÁCH TÁC GIẢ</h1>
-	<p>
-		<a class="btn btn-info" href="?page=addauthor"><i class="fa fa-plane"></i></a>
-	</p>
+	<h1 class="text-center">DANH SÁCH YÊU CẦU</h1>
 	<table class="table-striped table-responsive table-bordered" id="myTable">
 		<thead>
 			<tr>
@@ -58,12 +55,23 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 					<td><?php echo $row["FeedBackTitle"] ?></td>
 					<td><?php echo $row["FeedBackDate"] ?></td>
                     <td><?php echo $row["FeedBackContent"] ?></td>
-                    <td><?php echo $row["FeedBackStatus"] ?></td>
+                    <td>
+                    <form  method="post" action="">
+                                            <?php 
+                                            if ($row["Active"]==1){
+                                                echo '<a class="btn btn-danger" href="?page=ActiveUser&Active='.$row["Active"].'&Username='.$row["Username"].'">Đóng</a>';
+                                            }
+                                            else {
+                                                echo '<a class="btn btn-primary" href="?page=ActiveUser&Active='.$row["Active"].'&Username='.$row["Username"].'">Mở</a>';
+                                            }
+                    ?>
+                    </form>
+                    </td>
 					<td align='center'>
-						<a class="btn btn-info" href="?page=author&ma=<?php echo $row['AuthorId']; ?>" onclick="return deleteConfirm()">
-							<i class="fa fa-remove"></i></a>
+						<a class="btn btn-primary" href="?page=feedback&ma=<?php echo $row['FeedBackId']; ?>" onclick="return deleteConfirm()">
+							<i class="fa fa-trash"></i></a>
 						</td>
-						<td><a class="btn btn-primary" href="?page=updateauthor&ma=<?php echo $row['AuthorId']; ?>"><i class="fa fa-home"></i></a></td>
+
 					</tr>
 					<?php
 					$stt++;
@@ -73,7 +81,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 		</table>
 		<div class="row" style="background-color:#FFF"><!--Nút chức nang-->
 			<div class="col-md-12">
-				<input type="submit" value="Xóa mục chọn" name="btnXoa" id="btnXoa" onclick='return 	 deleteConfirm()' class="btn btn-info"/>
+				<input type="submit" value="Xóa Hàng Loạt" name="btnXoa" id="btnXoa" onclick='return 	 deleteConfirm()' class="btn btn-info"/>
 
 			</div>
 		</div>

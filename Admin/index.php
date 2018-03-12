@@ -61,7 +61,7 @@
                 </li>
                 <li><a href="?page=news"> <i class="icon-form"></i>Tin Tức</a></li>
                 <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
-                <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>
+                <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi                            </a></li>
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="#">Page</a></li>
@@ -319,7 +319,7 @@ if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
                 echo "<script>window.location.href='?page=user'</script>";
               }
 //status
-if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
+if(isset($_GET['page'])&& $_GET['page']=="ActiveUser1"){
 
                 if($_GET['Status'] == 0){
                   $status = 1;
