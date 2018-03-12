@@ -314,6 +314,20 @@ if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
                 mysqli_query($conn,$updateStatus);
                 echo "<script>window.location.href='?page=user'</script>";
               }
+//status
+if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
+
+                if($_GET['Status'] == 0){
+                  $status = 1;
+                }
+                else{
+                  $status = 0;
+                }
+                $updateStatus = "UPDATE `user` SET `Status`=".$status." where `UserName` = '".$_GET['Username']."'";
+                mysqli_query($conn,$updateStatus);
+                echo "<script>window.location.href='?page=user'</script>";
+              }
+  
   
                                   }
                                 else
