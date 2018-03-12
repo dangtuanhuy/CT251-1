@@ -15,6 +15,7 @@ include ROOT_PATH.'/config/config.db.php';
     $numphone = "";
     $emails = "";
     $sex = "";
+    $dateexprired = "";
     if(isset($_POST["btnRegister"]))
     {
         $name = $_POST["txtUsername"];
@@ -22,11 +23,23 @@ include ROOT_PATH.'/config/config.db.php';
         $display = $_POST["txtDisplay"];
         $birthday = date('Y-m-d',  strtotime($_POST['txtDate']));
         $address = $_POST["txtAddress"];
+        $emails = $_POST["txtEmail"];
+        $numphone = $_POST["txtPhone"];
+        if(isset($_POST['rd'])) {
+			$sex = $_POST['rd'];
+        }
+        $dateexprired = date('Y-m-d',  strtotime($_POST['txtDateex']));//$_POST["txtDateex"];
+        $sqlinsert = "INSERT INTO `user`
+        (`Username`, `Passwords`, `DisplayName`, 
+        `UserImg`, `Birthday`, `Gender`, `Address`, `Phone`,
+         `Email`, `ExpriredDate`, `Active`, `Status`, `Role`) 
+        VALUES('$name','".md5($pass)."','$display','','$birthday','$sex','$address','$numphone','$emails ','$dateexprired',1,1,1)";
+        mysqli_query($conn,$sqlinsert);
     }
 ?>
 <div class="col" >
 <div class="container">
-    <form class="form-horizontal" role="form" method="POST" action="#">
+    <form class="form-horizontal" role="form" method="post" action="#">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -124,8 +137,11 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-2">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0"></div>
-                        <input type="radio" name="rd" class="form-control" id="txtBoy" >Nam
-                        <input type="radio" name="rd" class="form-control" id="txtGirl">Nữ
+
+                        <input type="radio" name="rd" class="form-control" id="txtBoy" 
+                        <?php if(isset($Gender)&&$Gender=="0") { echo "checked";} ?> />Nam
+                        <input type="radio" name="rd" class="form-control" id="txtGirl"
+                        <?php if(isset($Gender)&&$Gender=="1") { echo "checked";} ?> />Nữ
                         
                 </div>
             </div>
@@ -200,9 +216,29 @@ include ROOT_PATH.'/config/config.db.php';
             </div>
         </div>
         <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="txtDateex">Ngày Kích Hoạt: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0"></div>
+                        <input type="date" name="txtDateex" class="form-control" id="txtDateex"
+                                required>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success"><i class="fa fa-user-plus" name="btnRegister"></i> Register</button>
+                <button type="submit" class="btn btn-success" name="btnRegister" ><i class="fa fa-user-plus" ></i> Register</button>
             </div>
         </div>
     </form>
