@@ -1,3 +1,4 @@
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 <script type="text/javascript">
 	function deleteConfirm()
 	{
@@ -59,10 +60,12 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
                     <form  method="post" action="">
                                             <?php 
                                             if ($row["FeedBackStatus"]==1){
-                                                echo '<a class="btn btn-danger" href="?page=ActiveUser2&FeedBackStatus='.$row["FeedBackStatus"].'&FeedBackId='.$row["FeedBackId"].'">Đóng</a>';
+                                                echo '<a class="btn btn-info" href="?page=ActiveUser2&FeedBackStatus='.$row["FeedBackStatus"].'&FeedBackId='.$row["FeedBackId"].'"><i class="fas fa-eye"></i>
+
+												</a>';
                                             }
                                             else {
-                                                echo '<a class="btn btn-primary" href="?page=ActiveUser2&FeedBackStatus='.$row["FeedBackStatus"].'&FeedBackId='.$row["FeedBackId"].'">Mở</a>';
+                                                echo '<a class="btn btn-danger" href="?page=ActiveUser2&FeedBackStatus='.$row["FeedBackStatus"].'&FeedBackId='.$row["FeedBackId"].'"><i class="far fa-eye-slash"></i></a>';
                                             }
                     ?>
                     </form>
