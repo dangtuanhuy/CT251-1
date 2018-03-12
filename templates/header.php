@@ -31,7 +31,9 @@
                     <p class="nav-link-text">Danh sách</p>
                 </a>
                 <a class="nav-link text-center" href="#">
-                    <p class="mb-0"><i class="fa fa-shopping-cart"><span class="badge">1</span></i></p>
+                    <p class="mb-0"><i class="fa fa-shopping-cart"></i>
+                        <strong class='badge badge-pill' id="card-badge">3</strong>
+                    </p>
                     <p class="nav-link-text">Giỏ sách</p>
                 </a>
                 <a class="nav-link text-center" href=<?= TEMPLATES_PATH.'/FAQ.php' ?>>
