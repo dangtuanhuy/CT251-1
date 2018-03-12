@@ -58,17 +58,17 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
                     <td>
                     <form  method="post" action="">
                                             <?php 
-                                            if ($row["Active"]==1){
-                                                echo '<a class="btn btn-danger" href="?page=ActiveUser&Active='.$row["Active"].'&Username='.$row["Username"].'">Đóng</a>';
+                                            if ($row["FeedBackStatus"]==1){
+                                                echo '<a class="btn btn-danger" href="?page=ActiveUser2&FeedBackStatus='.$row["FeedBackStatus"].'&FeedBackId='.$row["FeedBackId"].'">Đóng</a>';
                                             }
                                             else {
-                                                echo '<a class="btn btn-primary" href="?page=ActiveUser&Active='.$row["Active"].'&Username='.$row["Username"].'">Mở</a>';
+                                                echo '<a class="btn btn-primary" href="?page=ActiveUser2&FeedBackStatus='.$row["FeedBackStatus"].'&FeedBackId='.$row["FeedBackId"].'">Mở</a>';
                                             }
                     ?>
                     </form>
                     </td>
 					<td align='center'>
-						<a class="btn btn-primary" href="?page=feedback&ma=<?php echo $row['FeedBackId']; ?>" onclick="return deleteConfirm()">
+						<a class="btn btn-info" href="?page=feedback&ma=<?php echo $row['FeedBackId']; ?>" onclick="return deleteConfirm()">
 							<i class="fa fa-trash"></i></a>
 						</td>
 
