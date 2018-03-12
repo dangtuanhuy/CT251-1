@@ -54,7 +54,6 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                         <input type="text" name="txtUsername" class="form-control" id="txtUsername"
                                placeholder="Enter Your Username" required autofocus>
                     </div>
@@ -75,7 +74,6 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                         <input type="password" name="txtPassword" class="form-control" id="txtPassword"
                                placeholder="Enter your Password" required>
                     </div>
@@ -96,7 +94,6 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book"></i></div>
                         <input type="text" name="txtDisplay" class="form-control" id="txtDisplay"
                                placeholder="Enter your Display name" required>
                     </div>
@@ -178,7 +175,6 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-book"></i></div>
                         <input type="email" name="txtEmail" class="form-control" id="txtEmail"
                                placeholder="Enter your Email" required>
                     </div>
@@ -199,7 +195,6 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
                         <input type="tel" name="txtPhone" class="form-control" id="txtPhone"
                                placeholder="Enter your Phone" required>
                     </div>
