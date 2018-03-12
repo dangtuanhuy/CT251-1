@@ -7,7 +7,7 @@
                 <a href=<?= TEMPLATES_PATH.'/about.php' ?>>Về chúng tôi</a>
             </span>
             <span class="right pl-3">
-                <a href="">Gửi phản hồi</a>
+                <a href=<?= PUBLIC_PATH.'/feedback.php' ?>>Gửi phản hồi</a>
             </span>
         </div>
     </footer>
