@@ -20,7 +20,7 @@ else
 }
 function bindUpdateUser($conn, $selectedValue) {
 	$sqlstring = "SELECT * FROM news
-	INNER JOIN user on news.NewsId = user.Username";
+	INNER JOIN user on news.Username = user.Username";
 	$result = mysqli_query($conn, $sqlstring);
 	echo "<select name='slUser' class='form-control'>
 	<option value='0'>Vui lòng chọn người đăng tin</option>";
@@ -64,16 +64,16 @@ if(isset($_POST["btnCapNhat"])){
 		</div>
 		<div class="form-group">
 			<label for="txtDate">Ngày cập nhật: </label>
-			<input type="date" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 41" required="" value='<?php echo $dateupdate; ?>'>
+			<input type="txtDate" class="form-control" id="txtDate" name="txtDate" placeholder="VD: 41" required="" value='<?php echo $newsdate; ?>'>
 		</div>
 		<div>
 			<label for="txtTinTuc">Tên Tin Tức</label>
 			
 			<input type="text" class="form-control" id="txtTinTuc" name="txtTinTuc" value='<?php echo $newsname; ?>'/>
 		</div>
-		<div class="form-group">
-			<label for="txtNoidung">Nội dung: </label>
-			<textarea class="form-control" id="txtDetails" name="txtDetails" placeholder="VD: 41" value='<?php echo $newscontent; ?>'></textarea>
+		<div>
+			<label for="txtDetails">Nội dung</label>
+			<textarea name="txtDetails" rows="3" class="form-control"><?php echo $newscontent ; ?></textarea>
 		</div>
 		<div class="form-group">
 			<label for="txtDeline">Người đăng tin: </label>
