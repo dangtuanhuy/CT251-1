@@ -43,7 +43,7 @@ include ROOT_PATH.'/config/config.db.php';
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <h2 class="text-center">Register</h2>
+                <h2 class="text-center mt-4">Register</h2>
                 <hr>
             </div>
         </div>
@@ -134,15 +134,13 @@ include ROOT_PATH.'/config/config.db.php';
             <div class="col-md-3 field-label-responsive">
                 <label for="rd">Giới Tính: </label>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0"></div>
-
-                        <input type="radio" name="rd" class="form-control" id="txtBoy" 
+                    <div class="input-group mb-2 mr-sm-3 mb-sm-0"></div>
+                        <input type="radio" name="rd" id="txtBoy" 
                         <?php if(isset($Gender)&&$Gender=="0") { echo "checked";} ?> />Nam
-                        <input type="radio" name="rd" class="form-control" id="txtGirl"
+                        <input type="radio" name="rd" id="txtGirl"
                         <?php if(isset($Gender)&&$Gender=="1") { echo "checked";} ?> />Nữ
-                        
                 </div>
             </div>
             <div class="col-md-3">
