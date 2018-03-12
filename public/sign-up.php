@@ -4,6 +4,7 @@ define('ROOT_PATH', dirname(__DIR__));
 include ROOT_PATH.'/config/config.php'; 
 include ROOT_PATH.'/config/config.db.php';
 ?>
+<?php include TEMPLATES_PATH.'/header.php' ?>
 <?php
 if (isset($_POST['btnLogin'])) {
 	$username = trim($_POST["txtUsername"]);
@@ -70,14 +71,13 @@ if (isset($_POST['btnLogin'])) {
                         </span>
                 </div>
             </div>
-        <div class="row">
         <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-success" name="btnLogin" ><i class="fa fa-user-plus" ></i> Đăng nhập</button>
-                <button type="button" class="btn btn-success" name="btnCancle" ><i class="fa fa-user-plus" ></i>Hủy</button>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success" name="btnLogin" > Đăng nhập</button>
+                <button type="button" class="btn btn-success" name="btnLogin" >Hủy</button>
             </div>
-        </div>
         </div>
 </form>
 </div>
 </div>
+<?php include TEMPLATES_PATH.'/_footer.php' ?>
