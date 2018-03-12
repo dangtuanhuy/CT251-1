@@ -318,6 +318,19 @@ if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
                 mysqli_query($conn,$updateStatus);
                 echo "<script>window.location.href='?page=user'</script>";
               }
+              //Feedback
+              if(isset($_GET['page'])&& $_GET['page']=="ActiveUser2"){
+
+                if($_GET['FeedBackStatus'] == 0){
+                  $active = 1;
+                }
+                else{
+                  $active = 0;
+                }
+                $updateStatus = "UPDATE `feedback` SET `FeedBackStatus`=".$active." where `FeedBackId` = '".$_GET['FeedBackId']."'";
+                mysqli_query($conn,$updateStatus);
+                echo "<script>window.location.href='?page=feedback'</script>";
+              }
 //status
 if(isset($_GET['page'])&& $_GET['page']=="ActiveUser1"){
 
