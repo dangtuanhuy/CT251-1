@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (isset($_SESSION["card"])){
+        $_SESSION["card"] = array();
+    }
+?>
 <div class="col">
     <div class="container-fluid">
         <div class="row pt-2">
