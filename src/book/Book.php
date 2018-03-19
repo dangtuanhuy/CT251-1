@@ -84,7 +84,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 								<i class="fa fa-trash-o"></i></a>
 							</td>
 							<td><a class="btn btn-primary" href="?page=updatebook&ma=<?php echo $row['BookId']; ?>"><i class="fa fa-pencil-square-o"></i></a></td>
-							<td><a class="btn btn-secondary" href="#"><i class="fa fa-picture-o"></i></a></td>
+							<td><a class="btn btn-secondary" href="?page=updatefile&ma=<?php echo $row['BookId']; ?>"><i class="fa fa-picture-o"></i></a></td>
 							<td><a class="btn btn-secondary" href="#"><i class="fa fa-book"></i></a></td>
 						</tr>
 						<?php
