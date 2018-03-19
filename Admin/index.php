@@ -62,9 +62,9 @@
                 <li><a href="?page=news"> <i class="icon-form"></i>Tin Tức</a></li>
                 <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
                 <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi                            </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Mượn trả</a>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Quản Lý Mượn trả</a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Mượn</a></li>
+                    <li><a href="?page=lenditem">Mượn</a></li>
                     <li><a href="#">Trả</a></li>
                     <li><a href="#">Trả nửa vời</a></li>
                   </ul>
@@ -298,6 +298,11 @@
     if($page=="feedback")
     {
       include_once("../src/feedback/feedback.php");
+    }
+    //lenditem
+    if($page == "lenditem")
+    {
+      include_once("../src/lenditem/lenditem.php");
     }
     //User
     if($page=="user")
