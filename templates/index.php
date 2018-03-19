@@ -1,3 +1,55 @@
+<?php
+    session_start();
+    if (isset($_SESSION["card"])){
+        $_SESSION["card"] = array();
+    }
+?>
+<?php
+    function Orderbook($ma,$conn)
+	{
+			$id = $_GET["id"];
+			$resultsql = mysqli_query($conn, "SELECT a.*, b.authorNames FROM book a, author b
+									WHERE BookId = ".$id);
+			$rowsql = mysqli_fetch_row($resultsql);
+			if($rowsql[0] >= 1)
+			{
+				$co = false;
+				foreach ($_SESSION["card"] as $key => $row) 
+				{
+					if($key==$ma)
+					{
+						$_SESSION['card'][$key]["quality"] +=  1;
+						$co = true;
+					}
+				}
+				
+				if(!$co)
+				{
+					$name = $rowsql[1];
+					$lendcost = $rowsql[11];
+					$author = $rowsql[12];
+					
+					$dathang = array(
+					"name" => $name,
+					"lendcost" => $lendcost,
+					"quality" =>1,
+					"author" => $author);
+					$_SESSION['card'][$id] = $orderbook;
+				}
+				echo "<script language='javascript'> alert('Sachs đã được thêm vào giỏ hàng!'); </script>";
+			}
+			else
+			{
+				echo "<script>alert('Số lượng bạn đặt vượt quá số lượng trong kho.');</script>";
+			}
+	}
+	
+	if(isset($_GET['func'])&isset($_GET['id']))
+	{
+		$id = $_GET['id'];
+		Orderbook($id,$conn);
+	}
+?>
 <div class="col">
     <div class="container-fluid">
         <div class="row pt-2">
@@ -184,5 +236,4 @@
         ?>
         <!-- ///Popular book -->
     </div>
-</div>        
-    
+</div>         
