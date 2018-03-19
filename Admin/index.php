@@ -62,11 +62,11 @@
                 <li><a href="?page=news"> <i class="icon-form"></i>Tin Tức</a></li>
                 <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
                 <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi                            </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Mượn trả</a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
+                    <li><a href="#">Mượn</a></li>
+                    <li><a href="#">Trả</a></li>
+                    <li><a href="#">Trả nửa vời</a></li>
                   </ul>
                 </li>
                 <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
