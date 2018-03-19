@@ -44,7 +44,7 @@
 			}
 	}
 	
-	if(isset($_GET['func'])&isset($_GET['id']))
+	if(isset($_GET['func'])&&isset($_GET['id']))
 	{
 		$id = $_GET['id'];
 		Orderbook($id,$conn);
