@@ -65,7 +65,7 @@
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Quản Lý Mượn trả</a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="?page=lenditem">Mượn</a></li>
-                    <li><a href="#">Trả</a></li>
+                    <li><a href="?page=receive">Trả</a></li>
                     <li><a href="#">Trả nửa vời</a></li>
                   </ul>
                 </li>
@@ -304,6 +304,11 @@
     {
       include_once("../src/lenditem/lenditem.php");
     }
+    //receive
+    if($page == "receive")
+    {
+      include_once("../src/receive/Receive.php");
+    }
     //User
     if($page=="user")
     {
@@ -322,6 +327,19 @@ if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
                 $updateStatus = "UPDATE `user` SET `Active`=".$active." where `UserName` = '".$_GET['Username']."'";
                 mysqli_query($conn,$updateStatus);
                 echo "<script>window.location.href='?page=user'</script>";
+              }
+//Status muon tra
+if(isset($_GET['page'])&& $_GET['page']=="ActiveUsers"){
+
+                if($_GET['ReceiveStatus'] == 0){
+                  $active = 1;
+                }
+                else{
+                  $active = 0;
+                }
+                $updateStatus = "UPDATE `receiveitem` SET `ReceiveStatus`=".$active." where `ReceiveId` = '".$_GET['ReceiveId']."'";
+                mysqli_query($conn,$updateStatus);
+                echo "<script>window.location.href='?page=receive'</script>";
               }
               //Feedback
               if(isset($_GET['page'])&& $_GET['page']=="ActiveUser2"){
