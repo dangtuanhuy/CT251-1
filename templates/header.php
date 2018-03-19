@@ -22,7 +22,7 @@
                     <p class="mb-0"><i class="fa fa-home"></i></p>
                     <p class="nav-link-text">Trang chủ</p>
                 </a>
-                <a class="nav-link text-center" href="#">
+                <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/categories.php'?>">
                     <p class="mb-0"><i class="fa fa-list"></i></p>
                     <p class="nav-link-text">Danh mục</p>
                 </a>
