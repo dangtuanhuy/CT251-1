@@ -57,6 +57,7 @@
                     <li><a href="?page=book">Quản lý thông tin sách</a></li>
                     <li><a href="?page=bookauthor">Quản lý sách - tác giả</a></li>
                     <li><a href="?page=user">Độc Giả</a></li>
+                    <li><a href="?page=imgs">Hinh Anh</a></li>
                   </ul>
                 </li>
                 <li><a href="?page=news"> <i class="icon-form"></i>Tin Tức</a></li>
@@ -307,6 +308,11 @@
     if($page=="lenditem")
     {
       include_once("../src/lenditem/lenditem.php");
+    }
+    //Imgs
+    if($page=="imgs")
+    {
+      include_once("../src/imgs/imgs.php");
     }
     //Receive
     if($page=="receive")
