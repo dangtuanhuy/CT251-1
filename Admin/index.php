@@ -64,8 +64,8 @@
                 <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi                            </a></li>
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Mượn trả</a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Mượn</a></li>
-                    <li><a href="#">Trả</a></li>
+                    <li><a href="?page=lenditem">Mượn</a></li>
+                    <li><a href="?page=receive">Trả</a></li>
                     <li><a href="#">Trả nửa vời</a></li>
                   </ul>
                 </li>
@@ -303,6 +303,29 @@
     {
       include_once("../src/feedback/feedback.php");
     }
+    //lenitem
+    if($page=="lenditem")
+    {
+      include_once("../src/lenditem/lenditem.php");
+    }
+    //Receive
+    if($page=="receive")
+    {
+      include_once("../src/receive/Receive.php");
+    }
+    //Receive Status
+if(isset($_GET['page'])&& $_GET['page']=="ActiveUsers"){
+
+                if($_GET['ReceiveStatus'] == 0){
+                  $active = 1;
+                }
+                else{
+                  $active = 0;
+                }
+                $updateStatus = "UPDATE `receiveitem` SET `ReceiveStatus`=".$active." where `ReceiveId` = '".$_GET['ReceiveId']."'";
+                mysqli_query($conn,$updateStatus);
+                echo "<script>window.location.href='?page=receive'</script>";
+              }
     //User
     if($page=="user")
     {
