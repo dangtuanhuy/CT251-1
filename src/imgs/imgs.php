@@ -12,22 +12,54 @@
  <?php 
 if(isset($_GET['ma'])){
 	$sp_ma =$_GET["ma"];
-	$result = mysqli_query($conn,"SELECT * FROM `book` WHERE BookId=$sp_ma");
+	$result = mysqli_query($conn,"SELECT BookNames FROM `book` WHERE BookId=$sp_ma");
 	$row=mysqli_fetch_row($result);
-	$ten=$row[1];			
+	$ten=$row[0];			
 }    
 	else 
 	{
 		echo '<meta http-equiv="refresh" content="0: URL=imgs.php"/>';
 	}
-?>
+if(isset($_POST['btnLuu']))
+{
+	$sp_ma = $_POST['txtMa'];
+	$taptin = $_FILES['fileHinhAnh'];
+	if($taptin['type']=="image/jpg" || $taptin['type']=="image/jpeg" || $taptin['type']=="image/png" ||$taptin['type']=="image/gif")
+	{
+		if($taptin['size'] <= 614400)
+		 {
+			 $tentaptin ="resources/books/".$taptin['name'];
+			 //copy($taptin['tmp_name'],$tentaptin);
+			 $sqstring="insert into imgbook(ImgBook, BookId) values('$tentaptin', '$sp_ma')";
+			 $rs = mysqli_query($conn,$sqstring);
+			 if($rs)
+			 {
+				  echo "<script>alert('upload thành công...');</script>";
+				  echo  '<meta http-equiv="refresh" content="0;URL=?page=imgs&ma='.$sp_ma.'">';
+			 }
+			 else 
+			 {
+				 echo  "<script>alert('upload hình không thành công...');</script>";
+			     echo  '<meta http-equiv="refresh" content="0;URL=?page=imgs&ma='.$sp_ma.'">';
+			 }
+		 }
+		 else
+		 {
+			 echo "hình có kích thước quá lớn!";
+		 }
+	}
+	else
+	{
+		echo "hình ảnh không đúng định dạng";
+	}
+}?>
 <div class="container">
- 	<h2>Qu?n lý hình ảnh sách</h2>
+ 	<h2>Quản lý hình ảnh sách</h2>
 			 	<form  id="frmHinhAnh" class="form-horizontal" name="frmHinhAnh" method="post" action="" enctype="multipart/form-data" role="form">
 				<div class="form-group">
 				<label for="txtTen" class="col-sm-2 control-label">Mã Sách(*):  </label>
 				<div class="col-sm-10">
-				<input type="text" name="txtTen" id="txtTen" class="form-control" value='<?php echo $sp_ma; ?>' readonly>
+				<input type="text" name="txtMa" id="txtTen" class="form-control" value='<?php echo $sp_ma; ?>' readonly>
 				</div>
 				</div>	
                     <div class="form-group">    
@@ -69,7 +101,7 @@ if(isset($_GET['ma'])){
 								<?php echo $stt; ?>
 								</div>
 							  <div class='col-sm-2'>
-								<img src="product-imgs/<?php echo $row['ImgBook']; ?>" width="100px"/>
+								<img src="../<?php echo $row['ImgBook']; ?>" width="100px"/>
 							  </div>
 							  <div class='col-sm-3'>
 								  <a onclick="return deleteConfirm()" 
@@ -97,40 +129,8 @@ if(isset($_GET['ma'])){
 				</form>
 		</div><!--<div class="container">-->
 
+
 <?php
-if(isset($_POST['btnLuu']))
-{
-	$sp_ma = $_POST['txtMa'];
-	$taptin = $_FILES['fileHinhAnh'];
-	if($taptin['type']=="image/jpg" || $taptin['type']=="image/jpeg" || $taptin['type']=="image/png" ||$taptin['type']=="image/gif")
-	{
-		if($taptin['size'] <= 614400)
-		 {
-			 $tentaptin = $sp_ma."_".$taptin['name'];
-			 copy($taptin['tmp_name'],"product-imgs/".$tentaptin);
-			 $sqstring="insert into imgbook(ImgBook, BookId) values('$tentaptin', '$sp_ma')";
-			 $rs = mysqli_query($conn,$sqstring);
-			 if($rs)
-			 {
-				  echo "<script>alert('upload thành công...');</script>";
-				  echo  '<meta http-equiv="refresh" content="0;URL=?page=imgs&ma='.$sp_ma.'">';
-			 }
-			 else 
-			 {
-				 echo  "<script>alert('upload hình không thành công...');</script>";
-			     echo  '<meta http-equiv="refresh" content="0;URL=?page=imgs&ma='.$sp_ma.'">';
-			 }
-		 }
-		 else
-		 {
-			 echo "hình có kích thước quá lớn!";
-		 }
-	}
-	else
-	{
-		echo "hình ảnh không đúng định dạng";
-	}
-}
 
  if(isset($_GET["mahinh"]))
  {
