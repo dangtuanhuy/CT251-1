@@ -10,11 +10,13 @@ if (isset($_POST['btnLogin'])) {
 	$username = trim($_POST["txtUsername"]);
 	$password = trim($_POST["txtPassword"]);
 	$password = md5($password);
+
 	$result = mysqli_query($conn,"SELECT * FROM user WHERE Username='$username' AND Passwords='$password'");
 	if (mysqli_num_rows($result) == 1)
 	{
         $_SESSION["username"] = $username;
         echo "<script>window.location.href='../'</script>";
+
 	}else{
 		echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác!");</script>';
 	}

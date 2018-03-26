@@ -1,5 +1,8 @@
-<?php 
- session_start();
+<?php
+    session_start();
+    if(isset($_SESSION['giohang'])){
+        $_SESSION['giohang'] == array();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +36,7 @@
                     <p class="mb-0"><i class="fa fa-th-large"></i></p>
                     <p class="nav-link-text">Danh sách</p>
                 </a>
-                <a class="nav-link text-center" href="#">
+                <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/list-book.php'?>">
                     <p class="mb-0"><i class="fa fa-shopping-cart"></i>
                         <strong class='badge badge-pill' id="card-badge">3</strong>
                     </p>
