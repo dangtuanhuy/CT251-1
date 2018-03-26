@@ -77,7 +77,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 			</table>
 			<div class="row" style="background-color:#FFF"><!--Nút chức nang-->
 				<div class="col-md-12">
-					<input type="submit" value="Xóa mục chọn" name="btnXoa" id="btnXoa" onclick='return 	 deleteConfirm()' class="btn btn-info"/>
+					<input type="submit" value="Xóa mục chọn" name="btnXoa" id="btnXoa" onclick='return deleteConfirm()' class="btn btn-info"/>
 
 				</div>
 			</div>

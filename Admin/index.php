@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!isset($_SESSION['Username'])){
+	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,7 +146,7 @@
                                             <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
                                           </ul>
                                         </li>
-                                        <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                                        <li class="nav-item"><a href="Logout.php" class="nav-link logout"><?php if(isset($_SESSION["Username"])){echo $_SESSION["Username"]."  <i class='fa fa-power-off text-danger'></i>"; }?> </a><i class="fa fa-sign-out"></i></a></li>
                                       </ul>
                                     </div>
                                   </div>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,26 +31,45 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+  <?php include_once("../config/config.db.php"); ?>
+  <?php 
+    if(isset($_POST['btnLogion']))
+    {
+      $loginusername = trim($_POST["txtloginUsername"]);
+			$loginpassword = trim($_POST["txtloginPassword"]);
+      $loginpassword = md5($loginpassword);
+      $result = mysqli_query($connn,"SELECT `Username`,`Passwords`,`Role` FROM user WHERE `Role` = 4 , Username='$loginusername',Passwords='$loginpassword '");
+      if(mysqli_num_rows($result)==0)
+      {
+        $_SESSION["Username"] = $loginusername;
+						echo "<script>window.location.href='index.php'</script>";
+      }
+      else
+      {
+        echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác!");</script>';
+      }
+    }
+  ?>
     <div class="page login-page">
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
           <div class="form-inner">
-            <div class="logo text-uppercase"><span>Bootstrap</span><strong class="text-primary">Dashboard</strong></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+            <div class="logo text-uppercase"><span>BookDiamond</span><strong class="text-primary"></strong></div>
+            <p>Website mượn sách BookDiamond là một ứng dụng quản ly` sách phục vụ yêu cầu độc giả gần xa. Thanh toán nhanh gon lẹ</p>
             <form id="login-form" method="post">
               <div class="form-group-material">
-                <input id="login-username" type="text" name="loginUsername" required class="input-material">
-                <label for="login-username" class="label-material">Username</label>
+                <input id="txtloginUsername" type="text" name="txtloginUsername" required class="input-material">
+                <label for="txtloginUsername" class="label-material">Username</label>
               </div>
               <div class="form-group-material">
-                <input id="login-password" type="password" name="loginPassword" required class="input-material">
-                <label for="login-password" class="label-material">Password</label>
-              </div><a id="login" href="index.html" class="btn btn-primary">Login</a>
+                <input id="txtloginPassword" type="password" name="txtloginPassword" required class="input-material">
+                <label for="txtloginPassword" class="label-material">Password</label>
+              </div><input type="submit" value="LOGIN" name="btnLogion" class="btn btn-outline-info"/>
               <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-            </form><a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
+            </form>
           </div>
           <div class="copyrights text-center">
-            <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+            
             <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
           </div>
         </div>
