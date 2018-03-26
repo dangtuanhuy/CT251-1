@@ -47,12 +47,13 @@ if(!isset($_SESSION['Username'])){
                 <h2 class="h5">Nhóm 03</h2><span>Web Developer PHP</span>
               </div>
               <!-- Small Brand information, appears on minimized sidebar-->
-              <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+              <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
             </div>
             <!-- Sidebar Navigation Menus-->
             <div class="main-menu">
-              <h5 class="sidenav-heading">Main</h5>
-              <ul id="side-main-menu" class="side-menu list-unstyled">                  
+              <h5 class="sidenav-heading">Quản lý</h5>
+              <ul id="side-main-menu" class="side-menu list-unstyled"> 
+              <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Thống Kê</a></li>                 
                 <li><a href="#Dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-bars"></i>Quản lý Sách</a>
                   <ul id="Dropdown1" class="collapse list-unstyled ">
                     <li><a href="?page=category">Quản lý danh mục sách</a></li>
@@ -62,11 +63,12 @@ if(!isset($_SESSION['Username'])){
                     <li><a href="?page=lent">Phí Mượn</a></li>
                     <li><a href="?page=book">Quản lý thông tin sách</a></li>
                     <li><a href="?page=bookauthor">Quản lý sách - tác giả</a></li>
-                    <li><a href="?page=user">Độc Giả</a></li>
+               
                   </ul>
                 </li>
-                <li><a href="?page=news"> <i class="icon-form"></i>Tin Tức</a></li>
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li>
+                
+                <li><a href="?page=user"> <i class="icon-user"></i>Quản lý người dùng</a></li>
+                
                 <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi                            </a></li>
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Mượn trả</a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
@@ -75,13 +77,13 @@ if(!isset($_SESSION['Username'])){
                     <li><a href="#">Trả nửa vời</a></li>
                   </ul>
                 </li>
-                <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
-                <li> <a href="#"> <i class="icon-mail"></i>Demo
-                  <div class="badge badge-warning">6 New</div></a></li>
+                <!-- //?page=news -->
+                <li><a href="?page=news"> <i class="icon-website"></i>Quản lý tin tức                           </a></li>
+                
                 </ul>
               </div>
-              <div class="admin-menu">
-                <h5 class="sidenav-heading">Second menu</h5>
+              <!-- <div class="admin-menu"> -->
+                <!-- <h5 class="sidenav-heading">Second menu</h5>
                 <ul id="side-admin-menu" class="side-menu list-unstyled"> 
                   <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
                   <li> <a href="#"> <i class="icon-flask"> </i>Demo
@@ -90,7 +92,7 @@ if(!isset($_SESSION['Username'])){
                     <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
                   </ul>
                 </div>
-              </div>
+              </div> -->
             </nav>
             <div class="page">
               <!-- navbar-->
@@ -98,7 +100,7 @@ if(!isset($_SESSION['Username'])){
                 <nav class="navbar">
                   <div class="container-fluid">
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
-                      <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+                      <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
                         <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
                         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                           <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
