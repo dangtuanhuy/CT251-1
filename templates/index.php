@@ -1,42 +1,43 @@
 <?php
-    session_start();
-    if (isset($_SESSION["card"])){
-        $_SESSION["card"] = array();
-    }
+session_start();
+if(!isset($_SESSION["giohang"])){
+	$_SESSION["giohang"] = array();
+}
 ?>
 <?php
-    function Orderbook($ma,$conn)
+    function dathang($ma,$conn)
 	{
-			$id = $_GET["id"];
-			$resultsql = mysqli_query($conn, "SELECT a.*, b.authorNames FROM book a, author b
-									WHERE BookId = ".$id);
+			$ma = $_GET["id"];
+			$resultsql = mysqli_query($conn, "SELECT a.*, b.PublisherName FROM book a, publisher b WHERE BookId=".$ma);
 			$rowsql = mysqli_fetch_row($resultsql);
 			if($rowsql[0] >= 1)
 			{
-				$co = false;
-				foreach ($_SESSION["card"] as $key => $row) 
+				$coroi = false;
+				foreach ($_SESSION["giohang"] as $key => $row) 
 				{
 					if($key==$ma)
 					{
-						$_SESSION['card'][$key]["quality"] +=  1;
-						$co = true;
+						$_SESSION['giohang'][$key]["soluong"] +=  1;
+						$coroi = true;
 					}
 				}
 				
-				if(!$co)
+				if(!$coroi)
 				{
-					$name = $rowsql[1];
-					$lendcost = $rowsql[11];
-					$author = $rowsql[12];
+					$ten = $rowsql[1];
+					$gia = $rowsql[2];
+					$nsx = $rowsql[11];
 					
 					$dathang = array(
-					"name" => $name,
-					"lendcost" => $lendcost,
-					"quality" =>1,
-					"author" => $author);
-					$_SESSION['card'][$id] = $orderbook;
+					"ten" => $ten,
+					"gia" => $gia,
+					"soluong" =>1,
+					"hang" => $nsx);
+					$_SESSION['giohang'][$ma]=$dathang;
 				}
-				echo "<script language='javascript'> alert('Sachs đã được thêm vào giỏ hàng!'); </script>";
+				echo "<script language='javascript'>
+				alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!'); 
+				</script>";
 			}
 			else
 			{
@@ -44,12 +45,13 @@
 			}
 	}
 	
-	if(isset($_GET['func'])&&isset($_GET['id']))
+	if(isset($_GET['func'])&isset($_GET['id']))
 	{
-		$id = $_GET['id'];
-		Orderbook($id,$conn);
+		$ma = $_GET['id'];
+		dathang($ma,$conn);
 	}
-?>
+
+ ?>  
 <div class="col">
     <div class="container-fluid">
         <div class="row pt-2">
