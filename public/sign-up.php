@@ -9,13 +9,12 @@ include ROOT_PATH.'/config/config.db.php';
 if (isset($_POST['btnLogin'])) {
 	$username = trim($_POST["txtUsername"]);
 	$password = trim($_POST["txtPassword"]);
-
-
 	$password = md5($password);
-	$result = mysql_query("SELECT * FROM user WHERE Username='$username' AND Passwords='$password'");
-	if (mysql_num_rows($result) == 1)
+	$result = mysqli_query($conn,"SELECT * FROM user WHERE Username='$username' AND Passwords='$password'");
+	if (mysqli_num_rows($result) == 1)
 	{
-		$_SESSION["username"] = $username;
+        $_SESSION["username"] = $username;
+        echo "<script>window.location.href='../'</script>";
 	}else{
 		echo '<script> alert("Tên tài khoản hoặc mật khẩu không chính xác!");</script>';
 	}
@@ -24,7 +23,7 @@ if (isset($_POST['btnLogin'])) {
 ?>
 <div class="container">
 <div class="col">
-<form class="form-horizontal" role="form" method="post" action="#">
+<form class="form-horizontal" role="form" method="post" >
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
