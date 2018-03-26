@@ -13,7 +13,7 @@ if(!isset($_SESSION["giohang"])){
 			if($rowsql[0] >= 1)
 			{
 				$coroi = false;
-				foreach ($_SESSION["giohang"] as $key => $row) 
+				foreach ($_SESSION["giohang"] as $key => $row)
 				{
 					if($key==$ma)
 					{
@@ -21,13 +21,13 @@ if(!isset($_SESSION["giohang"])){
 						$coroi = true;
 					}
 				}
-				
+
 				if(!$coroi)
 				{
 					$ten = $rowsql[1];
 					$gia = $rowsql[2];
 					$nsx = $rowsql[11];
-					
+
 					$dathang = array(
 					"ten" => $ten,
 					"gia" => $gia,
@@ -36,7 +36,7 @@ if(!isset($_SESSION["giohang"])){
 					$_SESSION['giohang'][$ma]=$dathang;
 				}
 				echo "<script language='javascript'>
-				alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!'); 
+				alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!');
 				</script>";
 			}
 			else
@@ -44,14 +44,14 @@ if(!isset($_SESSION["giohang"])){
 				echo "<script>alert('Số lượng bạn đặt vượt quá số lượng trong kho.');</script>";
 			}
 	}
-	
+
 	if(isset($_GET['func'])&isset($_GET['id']))
 	{
 		$ma = $_GET['id'];
 		dathang($ma,$conn);
 	}
 
- ?>  
+ ?>
 <div class="col">
     <div class="container-fluid">
         <div class="row pt-2">
@@ -72,7 +72,7 @@ if(!isset($_SESSION["giohang"])){
                                 <strong>Is It Wrong to Try to Pick Up Girls in a Dungeon?</strong>
                             </a>
                         </h5>
-                        Life in the bustling city of Orario is never dull, especially for Bell Cranel, a naïve young man who hopes to become the greatest adventurer in the land. After a chance encounter with the lonely goddess, Hestia, his dreams become a little closer to reality. With her support, Bell embarks on a fantastic quest as he ventures deep within the city's monster-filled catacombs, known only as the "Dungeon." Death lurks around every corner in the cavernous depths of this terrifying labyrinth, and a mysterious power moves amidst the shadows.                            
+                        Life in the bustling city of Orario is never dull, especially for Bell Cranel, a naïve young man who hopes to become the greatest adventurer in the land. After a chance encounter with the lonely goddess, Hestia, his dreams become a little closer to reality. With her support, Bell embarks on a fantastic quest as he ventures deep within the city's monster-filled catacombs, known only as the "Dungeon." Death lurks around every corner in the cavernous depths of this terrifying labyrinth, and a mysterious power moves amidst the shadows.
                         <!-- <a href="#" class="btn btn-success mt-3 float-right">Xem chi tiết</a> -->
                     </div>
                 </div>
@@ -86,12 +86,12 @@ if(!isset($_SESSION["giohang"])){
                     <?php
                     $query = "SELECT `NewsId`, `Title` FROM `news` ORDER BY `NewsDate` DESC LIMIT 5;";
                     $news = $conn->query($query);
-                    while ($new = $news->fetch_array(MYSQLI_ASSOC)) 
+                    while ($new = $news->fetch_array(MYSQLI_ASSOC))
                     {
                     ?>
                         <li class="list-group-item">
                             <a href=<?= PUBLIC_PATH.'/news.php?id='.$new['NewsId'] ?>>
-                                <?= $new['Title'];?> 
+                                <?= $new['Title'];?>
                             </a>
                         </li>
                     <?php
@@ -128,7 +128,7 @@ if(!isset($_SESSION["giohang"])){
         $query = "SELECT * FROM `book` ORDER BY `BookUpdateDate` DESC LIMIT 6;";
         $start_row = true; // split line
         $books = $conn->query($query);
-        while ($book = $books->fetch_array(MYSQLI_ASSOC)) 
+        while ($book = $books->fetch_array(MYSQLI_ASSOC))
         {
             $temp = "SELECT `ImgBook` FROM `imgbook` WHERE `BookId`=".$book['BookId'];
             $img_book = $conn->query($temp)->fetch_object();
@@ -142,7 +142,7 @@ if(!isset($_SESSION["giohang"])){
                 <div class="media">
                      <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
                      <div class="media-body">
-                        <a href="" class="text-primary link-title">
+                        <a href="<?= PUBLIC_PATH.'/book-detail.php?id='.$book['BookId']; ?>" class="text-primary link-title">
                             <h5 class="mt-0"><?= $book['BookNames'] ?>
                             <?php if ($book['BookQuantity'] == 0): ?>
                             <span class="badge badge-default">Không có sẵn</span>
@@ -161,7 +161,7 @@ if(!isset($_SESSION["giohang"])){
                 <div class="media">
                     <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
                     <div class="media-body">
-                        <a href="" class="text-primary link-title">
+                        <a href="<?= PUBLIC_PATH.'/book-detail.php?id='.$book['BookId']; ?>" class="text-primary link-title">
                             <h5 class="mt-0"><?= $book['BookNames'] ?>
                             <?php if ($book['BookQuantity'] == 0): ?>
                             <span class="badge badge-default">Không có sẵn</span>
@@ -173,8 +173,8 @@ if(!isset($_SESSION["giohang"])){
                 </div>
             </div>
         </div>
-        <?php 
-            endif; 
+        <?php
+            endif;
         }
         ?>
         <!-- ///Recently Updated Book -->
@@ -187,7 +187,7 @@ if(!isset($_SESSION["giohang"])){
         $query = "SELECT * FROM `book` ORDER BY `BookLentTimes` DESC LIMIT 6;";
         $start_row = true; // split line
         $books = $conn->query($query);
-        while ($book = $books->fetch_array(MYSQLI_ASSOC)) 
+        while ($book = $books->fetch_array(MYSQLI_ASSOC))
         {
             $temp = "SELECT `ImgBook` FROM `imgbook` WHERE `BookId`=".$book['BookId'];
             $img_book = $conn->query($temp)->fetch_object();
@@ -201,7 +201,7 @@ if(!isset($_SESSION["giohang"])){
                 <div class="media">
                      <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
                      <div class="media-body">
-                        <a href="" class="text-primary link-title">
+                        <a href="<?= PUBLIC_PATH.'/book-detail.php?id='.$book['BookId']; ?>" class="text-primary link-title">
                             <h5 class="mt-0"><?= $book['BookNames'] ?>
                             <?php if ($book['BookQuantity'] == 0): ?>
                             <span class="badge badge-danger">Không có sẵn</span>
@@ -220,7 +220,7 @@ if(!isset($_SESSION["giohang"])){
                 <div class="media">
                     <img class="align-self-center mr-3 img-book" src=<?= ROOT_PATH.'/'.$img ?> alt="Book Image">
                     <div class="media-body">
-                        <a href="" class="text-primary link-title">
+                        <a href="<?= PUBLIC_PATH.'/book-detail.php?id='.$book['BookId']; ?>" class="text-primary link-title">
                             <h5 class="mt-0"><?= $book['BookNames'] ?>
                             <?php if ($book['BookQuantity'] == 0): ?>
                             <span class="badge badge-default">Không có sẵn</span>
@@ -232,10 +232,10 @@ if(!isset($_SESSION["giohang"])){
                 </div>
             </div>
         </div>
-        <?php 
-            endif; 
+        <?php
+            endif;
         }
         ?>
         <!-- ///Popular book -->
     </div>
-</div>         
+</div>
