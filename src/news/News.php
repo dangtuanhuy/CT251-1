@@ -47,6 +47,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 					<th><strong>Người Đăng</strong></th>
 					<th><strong>Xóa</strong></th>
 					<th><strong>Sửa</strong></th>
+					<th><strong>Hình</strong></th>
 				</tr>
 			</thead>
 
@@ -75,6 +76,7 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 								<i class="fa fa-trash-o"></i></a>
 							</td>
 							<td><a class="btn btn-primary" href="?page=updatenews&ma=<?php echo $row['NewsId']; ?>"><i class="fa fa-pencil-square-o"></i></a></td>
+						<td><a class="btn btn-secondary" href="?page=imgss&ma=<?php echo $row['NewsId']; ?>"><i class="fa fa-picture-o"></i></a></td>
 						</tr>
 						<?php
 						$stt++;
