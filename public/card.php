@@ -1,3 +1,11 @@
+<?php
+define('ROOT_PATH', dirname(__DIR__));
+
+include ROOT_PATH.'/config/config.php';
+include ROOT_PATH.'/config/config.db.php';
+?>
+
+<?php include TEMPLATES_PATH . '/header.php'; ?>
 <script language="javascript">
             function confirmDelete(){
                 if(confirm("Bạn có chắc chắn muốn xóa!")){
@@ -73,3 +81,4 @@ if (isset($_POST['btnDongY'])) {
     	</div>
     </div>
 </form>
+<?php include TEMPLATES_PATH.'/_footer.php' ?>
