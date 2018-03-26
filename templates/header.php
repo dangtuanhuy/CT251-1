@@ -49,14 +49,19 @@
                 <?php
                     if(isset($_SESSION['username']) && $_SESSION['username']){
                 ?>
-                <a class="nav-link text-center" href="" >
+                <a class="nav-link text-center" href="#" >
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Chào <?php echo $_SESSION['username'] ?></p>
+                </a>
+                <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/updateUser.php' ?>>
+                    <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
+                    <p class="nav-link-text">Cập Nhật Thông Tin</p>
                 </a>
                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-out.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng Xuất</p>
                 </a>
+                
                 <?php 
                     }
                     else
