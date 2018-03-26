@@ -1,9 +1,61 @@
 <?php
+    if(!isset($_SESSION["giohang"])){
+        $_SESSION["giohang"] = array();
+    }
+?>
+<?php
 define('ROOT_PATH', dirname(__DIR__));
 
 include ROOT_PATH.'/config/config.php';
 include ROOT_PATH.'/config/config.db.php';
 ?>
+<?php
+    function dathang($ma,$conn)
+	{
+			$ma = $_GET["id"];
+			$resultsql = mysqli_query($conn, "SELECT a.*, b.PublisherName FROM book a, publisher b WHERE BookId=".$ma);
+			$rowsql = mysqli_fetch_row($resultsql);
+			if($rowsql[0] >= 1)
+			{
+				$coroi = false;
+				foreach ($_SESSION['giohang'] as $key => $row)
+				{
+					if($key==$ma)
+					{
+						$_SESSION['giohang'][$key]["soluong"] +=  1;
+						$coroi = true;
+					}
+				}
+
+				if(!$coroi)
+				{
+					$ten = $rowsql[1];
+					$gia = $rowsql[2];
+					$nsx = $rowsql[11];
+					$dathang = array(
+					"ten" => $ten,
+					"gia" => $gia,
+					"soluong" =>1,
+					"hang" => $nsx);
+					$_SESSION['giohang'][$ma]=$dathang;
+				}
+				echo "<script language='javascript'>
+				alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!');
+				</script>";
+			}
+			else
+			{
+				echo "<script>alert('Số lượng bạn đặt vượt quá số lượng trong kho.');</script>";
+			}
+	}
+
+	if(isset($_GET['func'])&isset($_GET['id']))
+	{
+		$ma = $_GET['id'];
+		dathang($ma,$conn);
+	}
+
+ ?>
 
 <?php include TEMPLATES_PATH . '/header.php'; ?>
 
@@ -75,7 +127,7 @@ include ROOT_PATH.'/config/config.db.php';
                 </div>
                 <div class="row">
                     <div class="col-5">
-                        <input class="btn btn-success btn-block" type="submit" value="Thêm vào giỏ hàng">
+                    <a href="?func=dathang&<?='id='.$book->BookId ?>"><input class="btn btn-success btn-block" type="submit" value="Thêm vào giỏ hàng"></a>
                     </div>
                 </div>
             </div>
