@@ -1,4 +1,6 @@
+
 <?php
+
 include __DIR__ . '/config/config.php';
 
 include ROOT_PATH.'/config/config.db.php';
