@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['giohang'])){
+    if (!isset($_SESSION['giohang'])) {
         $_SESSION['giohang'] = array();
     }
 ?>
@@ -36,32 +36,35 @@
                     <p class="mb-0"><i class="fa fa-th-large"></i></p>
                     <p class="nav-link-text">Danh sách</p>
                 </a>
+                <?php
+                $totalBook = 0;
+                if (isset($_SESSION['giohang'])) {
+                    foreach($_SESSION['giohang'] as $key => $row) {
+                        $totalBook += 1;
+                    }
+                }
+                ?>
                 <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/card.php'?>">
                     <p class="mb-0"><i class="fa fa-shopping-cart"></i>
-                        <strong class='badge badge-pill' id="card-badge">2
-                        </strong>
+                    <?php if ($totalBook !== 0): ?>
+                        <strong class='badge badge-pill' id="card-badge"><?= $totalBook ?> </strong>
+                    <?php endif; ?>
                     </p>
-                    <p class="nav-link-text">Giỏ sách</p>
+                    <p class="nav-link-text">Giỏ hàng</p>
                 </a>
                 <a class="nav-link text-center" href=<?= TEMPLATES_PATH.'/FAQ.php' ?>>
                     <p class="mb-0"><i class="fa fa-question-circle"></i></p>
                     <p class="nav-link-text">FAQ</p>
                 </a>
                 <?php
-                    if(isset($_SESSION['username']) && $_SESSION['username']){
+                if (isset($_SESSION['username']) && $_SESSION['username']):
                 ?>
-                <a class="nav-link text-center" href="" >
-                    <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
-                    <p class="nav-link-text">Chào <?php echo $_SESSION['username'] ?></p>
-                </a>
                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-out.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng Xuất</p>
                 </a>
-                <?php 
-                    }
-                    else
-                    {
+                <?php
+                else:
                 ?>
                  <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-up.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
@@ -70,10 +73,9 @@
                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-in.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng ký</p>
-                </a> 
-                
+                </a>
                 <?php
-                    }
+                endif;
                 ?>
             </nav>
         </div>
@@ -89,7 +91,7 @@
         </button>
       </div>
       <div class="modal-body">
-   
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
