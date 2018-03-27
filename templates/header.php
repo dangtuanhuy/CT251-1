@@ -21,9 +21,22 @@
         <!-- Narbar -->
         <div class="col-1">
             <nav class="nav flex-column bg-success-light" id="navbar">
-                <a class="nav-link text-center mb-5" href="#">
-                    <img id="nav-user-img" src=<?= PUBLIC_PATH.'/images/noava.png'?> alt="">
+                <?php
+                $image_path = PUBLIC_PATH.'/images/noava.png';
+                $user_path = '#';
+                if (isset($_SESSION['username']) && $_SESSION['username']) {
+                    $user_path = PUBLIC_PATH . '/user-update.php?username=' . $_SESSION['username'];
+                    $query = "SELECT UserImg FROM user WHERE username = '" . $_SESSION['username'] . "'";
+                    $image = $conn->query($query)->fetch_object();
+                    $image_path = $image->UserImg;
+                }
+                ?>
+                <a class="nav-link text-center mb-4" href="<?= $user_path ?>">
+                    <img id="nav-user-img" src=<?= $image_path; ?> alt="">
                 </a>
+                <?php
+                // endif;
+                ?>
                 <a class="nav-link text-center" href=<?= ROOT_PATH.'/index.php'?>>
                     <p class="mb-0"><i class="fa fa-home"></i></p>
                     <p class="nav-link-text">Trang chủ</p>
