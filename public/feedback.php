@@ -31,7 +31,7 @@ include ROOT_PATH.'/config/config.db.php';
 <?php
     $name = "";
     $mota = "";
-    $nowdate = date_default_timezone_set('Asia/Vientiane');
+    $nowdate = date_default_timezone_set('Asia/Ho_Chi_Minh');
     if( isset($_POST["btnAdd"]))
     {
         $name = $_POST["txtSach"];

@@ -89,7 +89,7 @@ if (isset($_POST['btnDongY'])) {
                 </div> -->
             <div class="card-footer">
                 <div class="pull-md-5" style="margin:10px">
-                    <a href="" name="btnDongY" class="btn btn-success float-right">Tiến hành đặt mượn</a>
+                    <a href="cart-detail.php" name="btnDongY" class="btn btn-success float-right">Tiến hành đặt mượn</a>
                 </div>
             </div>
             <?php
