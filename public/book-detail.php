@@ -1,7 +1,7 @@
-<?php
-    if(!isset($_SESSION["giohang"])){
-        $_SESSION["giohang"] = array();
-    }
+<?php  session_start();
+	if(!isset($_SESSION["giohang"])){
+		$_SESSION["giohang"] = array();
+		}
 ?>
 <?php
 define('ROOT_PATH', dirname(__DIR__));
@@ -49,7 +49,7 @@ include ROOT_PATH.'/config/config.db.php';
 			}
 	}
 
-	if(isset($_GET['func'])&isset($_GET['id']))
+	if(isset($_GET['func'])&&isset($_GET['id']))
 	{
 		$ma = $_GET['id'];
 		dathang($ma,$conn);
