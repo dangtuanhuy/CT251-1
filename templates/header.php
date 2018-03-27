@@ -28,7 +28,7 @@
                     $user_path = PUBLIC_PATH . '/user-update.php?username=' . $_SESSION['username'];
                     $query = "SELECT UserImg FROM user WHERE username = '" . $_SESSION['username'] . "'";
                     $image = $conn->query($query)->fetch_object();
-                    $image_path = $image->UserImg;
+                    $image_path = ROOT_PATH . '/' . $image->UserImg;
                 }
                 ?>
                 <a class="nav-link text-center mb-4" href="<?= $user_path ?>">
