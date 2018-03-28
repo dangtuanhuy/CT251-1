@@ -17,10 +17,11 @@ if (isset($_POST['yui'])) {
                   VALUES ('{$date}', '{$exp_date}', '1', '1', '{$_SESSION['username']}')";
         mysqli_query($conn, $query);
 
-        $lend_id = mysqli_query($conn, "SELECT MAX(lendId) FROM lend");
-        foreach ($_SESSION['giohang'] as $book) {
+        $lend_id = mysqli_query($conn, "SELECT MAX(lendId) as LendID FROM lend");
+        $lend_id = $lend_id->fetch_object()->LendID;
+        foreach ($_SESSION['giohang'] as $book ) {
             $query = "INSERT INTO `lenditem`(`LendId`, `BookId`, `LendCreateDate`, `LendStatus`)
-                      VALUES ('{$lend_id}', '$book->$id', '{$date}', '1')";
+                      VALUES ('{$lend_id}', '{$book["id"]}', '{$date}', '1')";
             mysqli_query($conn, $query);
         }
 
@@ -35,7 +36,9 @@ if (isset($_POST['yui'])) {
     <div class="container">
         <div class="container">
         <?php
-        if ($_SESSION['giohang'] == null || !isset($_SESSION['username'])):
+        if (!isset($_SESSION['username'])):
+            echo "<script>window.location.href='".ROOT_PATH.'/public/sign-in.php'."'</script>";
+        elseif ($_SESSION['giohang'] == null):
             echo "Page not found";
         else:
         ?>

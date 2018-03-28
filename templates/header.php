@@ -79,11 +79,11 @@
                 <?php
                 else:
                 ?>
-                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-up.php' ?>>
+                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-in.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text"> Đăng nhập</p>
                 </a>
-                <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-in.php' ?>>
+                <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-up.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng ký</p>
                 </a>
