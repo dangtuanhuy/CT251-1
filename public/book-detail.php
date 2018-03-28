@@ -33,13 +33,16 @@ function dathang($ma, $conn)
 
         if (!$coroi)
         {
+            $masach = $rowsql[0];
             $ten = $rowsql[1];
             $gia = $rowsql[2];
             $nsx = $rowsql[11];
-            $dathang = array("ten" => $ten,
+            $dathang = array(
+                             "ten" => $ten,
                              "gia" => $gia,
                              "soluong" => 1,
                              "hang" => $nsx,
+                             "id" => $masach,
                        );
             $_SESSION['giohang'][$ma] = $dathang;
         }
