@@ -25,14 +25,14 @@ include ROOT_PATH.'/config/config.db.php';
         </div>
         <button type="submit" class="btn btn-primary" name="btnAdd">Gửi</button>
         </form>
-
     </div>
+    <div style="margin-top:197px;"></div>
 </div>
 <?php
     $name = "";
     $mota = "";
     $nowdate = date_default_timezone_set('Asia/Ho_Chi_Minh');
-    if( isset($_POST["btnAdd"]))
+    if ( isset($_POST["btnAdd"]))
     {
         $name = $_POST["txtSach"];
         $mota = $_POST["txtMoTa"];
@@ -40,10 +40,8 @@ include ROOT_PATH.'/config/config.db.php';
         $sqlinsert ="INSERT INTO `feedback`(`FeedBackTitle`,`FeedBackDate`,`FeedBackContent`) VALUES('$name','$nowdate','$mota')";
         mysqli_query($conn,$sqlinsert);
        // echo '<meta http-equiv="refresh" content="0;URL=?page=category"/>';
-
     }
-
 
 ?>
 
-<?php include TEMPLATES_PATH . '/_footer.php'; ?>
+<?php include TEMPLATES_PATH . '/footer.php'; ?>

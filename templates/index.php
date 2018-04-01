@@ -1,54 +1,13 @@
-
-<?php
-    function dathang($ma,$conn)
-	{
-			$ma = $_GET["id"];
-			$resultsql = mysqli_query($conn, "SELECT a.*, b.PublisherName FROM book a, publisher b WHERE BookId=".$ma);
-			$rowsql = mysqli_fetch_row($resultsql);
-			if($rowsql[0] >= 1)
-			{
-				$coroi = false;
-				foreach ($_SESSION["giohang"] as $key => $row)
-				{
-					if($key==$ma)
-					{
-						$_SESSION['giohang'][$key]["soluong"] +=  1;
-						$coroi = true;
-					}
-				}
-
-				if(!$coroi)
-				{
-					$ten = $rowsql[1];
-					$gia = $rowsql[2];
-					$nsx = $rowsql[11];
-
-					$dathang = array(
-					"ten" => $ten,
-					"gia" => $gia,
-					"soluong" =>1,
-					"hang" => $nsx);
-					$_SESSION['giohang'][$ma]=$dathang;
-				}
-				echo "<script language='javascript'>
-				alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!');
-				</script>";
-			}
-			else
-			{
-				echo "<script>alert('Số lượng bạn đặt vượt quá số lượng trong kho.');</script>";
-			}
-	}
-
-	if(isset($_GET['func'])&isset($_GET['id']))
-	{
-		$ma = $_GET['id'];
-		dathang($ma,$conn);
-	}
-
- ?>
 <div class="col">
     <div class="container-fluid">
+        <?php
+        if (isset($_SESSION['username'])):
+            $query = "SELECT ExpriredDate FROM user WHERE Username = '".$_SESSION['username']."'";
+            $ExpiredDate = $conn->query($query)->fetch_object()->ExpriredDate;
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $date = date('Y-m-d');
+            if ($ExpiredDate < $date):
+        ?>
         <div class="row pt-2">
             <div class="col">
                 <div class="alert alert-success text-danger" style="min-width: 100%;" role="alert">
@@ -56,9 +15,13 @@
                 </div>
             </div>
         </div>
+        <?php
+            endif;
+        endif;
+        ?>
         <div class="row pt-2">
             <!-- Random Article -->
-            <div class="col-8 d-md-none d-lg-block">
+            <div class="col-8 d-none d-lg-block d-xl-block">
                 <div class="media">
                     <img class="mr-3 rounded" src="http://bit.ly/2AX9mTF" style="max-width: 200px;" alt="Generic placeholder image">
                     <div class="media-body">
@@ -72,17 +35,15 @@
                     </div>
                 </div>
             </div>
-            <!-- End Random Article -->
             <!-- Notification -->
             <div class="col">
                 <div class="card">
-                    <div class="card-header bg-success-light text-center" style="color: #fff">Thông báo mới</div>
+                    <div class="card-header text-center bg-success-light" style="color: #fff">Thông báo mới</div>
                     <ul class="list-group list-group-flush">
                     <?php
                     $query = "SELECT `NewsId`, `Title` FROM `news` ORDER BY `NewsDate` DESC LIMIT 5;";
                     $news = $conn->query($query);
-                    while ($new = $news->fetch_array(MYSQLI_ASSOC))
-                    {
+                    while ($new = $news->fetch_array(MYSQLI_ASSOC)):
                     ?>
                         <li class="list-group-item">
                             <a href=<?= PUBLIC_PATH.'/news.php?id='.$new['NewsId'] ?>>
@@ -90,44 +51,41 @@
                             </a>
                         </li>
                     <?php
-                    }
+                    endwhile;
                     mysqli_free_result($news);
                     ?>
                     </ul>
                 </div>
-                <a href=<?= PUBLIC_PATH."/news.php" ?> class="float-right mt-2 link-title">
+                <a href=<?= PUBLIC_PATH."/news.php" ?> class="float-right mt-2">
                     Xem thêm
                     <i class="fa fa-chevron-right"></i>
                     <i class="fa fa-chevron-right"></i>
                     <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
-            <!-- End Notification -->
         </div>
         <hr>
         <!-- Search bar -->
-        <div class="row justify-content-md-center">
-            <form action="" class="form-inline col-10">
+        <div class="row justify-content-center">
+            <form action="" class="form-inline col-lg-10 col-md-10">
                 <label for="searchbar" class="sr-only">Search</label>
-                <span class="col-9"></span>
-                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 col-9" id="searchbar" placeholder="Nhập tên sách để tìm kiếm">
-                <button class="btn btn-primary">Tìm kiếm</button>
+                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 col-sm-9" id="searchbar" placeholder="Nhập tên sách để tìm kiếm">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
             </form>
         </div>
-        <!-- ///Search bar -->
         <!-- Recently Updated Book -->
-        <div class="row justify-content-md-center py-3">
-            <button type="button" class="btn btn-primary btn-lg index-label" disabled>Sách mới cập nhật</button>
+        <div class="row justify-content-center py-3">
+            <button type="button" class="btn btn-primary btn-lg index-label" disabled>
+                Sách mới cập nhật
+            </button>
         </div>
         <?php
         $query = "SELECT * FROM `book` ORDER BY `BookUpdateDate` DESC LIMIT 6;";
         $start_row = true; // split line
         $books = $conn->query($query);
-        while ($book = $books->fetch_array(MYSQLI_ASSOC))
-        {
+        while ($book = $books->fetch_array(MYSQLI_ASSOC)):
             $temp = "SELECT `ImgBook` FROM `imgbook` WHERE `BookId`=".$book['BookId'];
             $img_book = $conn->query($temp)->fetch_object();
-            // Check if imgbook is empty
             $img = is_object($img_book) ? $img_book->ImgBook : 'public/images/no-image.jpg';
             if ($start_row):
                 $start_row = false;
@@ -170,20 +128,18 @@
         </div>
         <?php
             endif;
-        }
+        endwhile;
         ?>
-        <!-- ///Recently Updated Book -->
         <hr>
         <!-- Popular book -->
-        <div class="row justify-content-md-center pt-1 pb-2">
+        <div class="row justify-content-center pt-1 pb-2">
             <button type="button" class="btn btn-danger btn-lg index-label" disabled>Sách phổ biến</button>
         </div>
         <?php
         $query = "SELECT * FROM `book` ORDER BY `BookLentTimes` DESC LIMIT 6;";
         $start_row = true; // split line
         $books = $conn->query($query);
-        while ($book = $books->fetch_array(MYSQLI_ASSOC))
-        {
+        while ($book = $books->fetch_array(MYSQLI_ASSOC)):
             $temp = "SELECT `ImgBook` FROM `imgbook` WHERE `BookId`=".$book['BookId'];
             $img_book = $conn->query($temp)->fetch_object();
             // Check if imgbook is empty
@@ -229,7 +185,7 @@
         </div>
         <?php
             endif;
-        }
+        endwhile;
         ?>
         <!-- ///Popular book -->
     </div>

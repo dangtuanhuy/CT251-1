@@ -1,16 +1,23 @@
     </div>
     <!-- Footer -->
-    <footer class="row py-1" id="footer">
+    <div class="row py-1 d-md-hidden" id="footer">
         <div class="container">
-            <span>Copyright &copy; 2018 - Book Manager Project</span>
-            <span class="right pl-3">
-                <a href=<?= TEMPLATES_PATH.'/about.php' ?>>Về chúng tôi</a>
-            </span>
-            <span class="right pl-3">
-                <a href=<?= PUBLIC_PATH.'/feedback.php' ?>>Gửi phản hồi</a>
-            </span>
+            <div class="row">
+                <div class="col text-lg-left text-sm-center">
+                    Copyright &copy; 2018 - Book Manager Project
+                </div>
+                <div class="col-lg-1 col-md-2 offset-lg-0 px-0 mr-3 text-sm-center">
+                    <a href=<?= PUBLIC_PATH.'/feedback.php' ?>>Gửi phản hồi</a>
+                </div>
+                <div class="col-lg-1 col-md-2 px-0 text-sm-center">
+                    <a href=<?= PUBLIC_PATH.'/feedback.php' ?>>Về chúng tôi</a>
+                </div>
+                <div class="col-lg-1 col-md-2 px-0 text-sm-center">
+                    <a href=<?= PUBLIC_PATH.'/LICENSE.php' ?>>LICENSE</a>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
     <!-- ///Footer -->
 </div>
     <script src=<?= PUBLIC_PATH."/js/fontawesome-all.min.js" ?>></script>

@@ -43,7 +43,6 @@ if (isset($_POST['btnDongY'])) {
 <div class="col">
     <div class="container-fluid">
         <div class="card mt-5">
-            <!-- <form id="form1" name="form1" method="post" action=""> -->
             <div class="card-header bg-dark text-light">
                 <i class="fa fa-shopping-cart"></i>
                 <strong>Sách trong giỏ hàng</strong>
@@ -54,7 +53,6 @@ if (isset($_POST['btnDongY'])) {
                     <div class="col-sm-3"><strong>Nhà xuất bản</strong></div>
                     <div class="col-sm"><strong>Giá bìa</strong></div>
                     <div class="col-sm-1"><strong>Số lượng</strong></div>
-                    <!-- <div class="col-sm"><strong>Thành tiền</strong></div> -->
                     <div class="col-sm-1"><strong>Xóa</strong></div>
                 </div>
                 <hr>
@@ -69,24 +67,17 @@ if (isset($_POST['btnDongY'])) {
                 <div class="col-sm-3"><?php echo $row["hang"] ?></div>
                 <div class="col-sm"><?php echo number_format($row["gia"], 0, ",", ".") ?></div>
                 <div class="col-sm-1"><?php echo $row['soluong'] ?></div>
-                <!-- <div class="col-sm"> <?php // echo number_format($row["gia"] * $row["soluong"], 0, ",", ".") ?> </div> -->
                 <div class="col-sm-1">
                     <a onclick='return confirmDelete()' href="?page=giohang&action=xoa&id=<?php echo $key ?>">
-                        <button type="button" class="btn btn-outline-danger"><i class="fas fa-minus-circle"></i></button>
+                        <button type="button" class="btn btn-sm btn-outline-danger"><i class="fas fa-minus-circle"></i></button>
+                        <!-- <img src="images/delete.png" alt=""> -->
                     </a>
                 </div>
             </div>
             <hr>
                 <?php
-                    // $tong += $row["gia"] * $row["soluong"];
                     endforeach;
                 ?>
-                <!-- <div class='row'>
-                    <div class='col-sm-12' align='right'>
-                        <label>Tổng tiền</label>:
-                            <span class='Gia'><?php //number_format($tong, 0, ",", ".")  ?></span> VNĐ
-                    </div>
-                </div> -->
             <div class="card-footer">
                 <div class="pull-md-5" style="margin:10px">
                     <a href="cart-detail.php" name="btnDongY" class="btn btn-success float-right">Tiến hành đặt mượn</a>
