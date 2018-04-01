@@ -1,7 +1,7 @@
-<?php 
+<?php
 define('ROOT_PATH', dirname(__DIR__));
 
-include ROOT_PATH.'/config/config.php'; 
+include ROOT_PATH.'/config/config.php';
 include ROOT_PATH.'/config/config.db.php';
 ?>
 
@@ -14,7 +14,6 @@ include ROOT_PATH.'/config/config.db.php';
         <div class="row justify-content-md-center py-3">
             <button type="button" class="btn btn-success btn-lg index-label" disabled>Gửi Phản Hồi</button>
         </div>
-        <?= date("Y-m-d H:i:s") ?>
         <form method="post">
         <div class="form-group">
             <label for="txtSach">Chủ Đề Phản Hồi</label>
@@ -26,13 +25,13 @@ include ROOT_PATH.'/config/config.db.php';
         </div>
         <button type="submit" class="btn btn-primary" name="btnAdd">Gửi</button>
         </form>
-        
+
     </div>
 </div>
 <?php
     $name = "";
     $mota = "";
-    $nowdate = date_default_timezone_set('Asia/Vientiane');
+    $nowdate = date_default_timezone_set('Asia/Ho_Chi_Minh');
     if( isset($_POST["btnAdd"]))
     {
         $name = $_POST["txtSach"];

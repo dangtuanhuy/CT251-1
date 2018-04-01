@@ -3,9 +3,70 @@ define('ROOT_PATH', dirname(__DIR__));
 
 include ROOT_PATH.'/config/config.php';
 include ROOT_PATH.'/config/config.db.php';
-?>
 
-<?php include TEMPLATES_PATH . '/header.php'; ?>
+include TEMPLATES_PATH . '/header.php';
+
+
+if (!isset($_SESSION["giohang"])) {
+    $_SESSION["giohang"] = array();
+}
+
+// $message_existed = false;
+// $message_success = false;
+
+function dathang($ma, $conn)
+{
+    $ma = $_GET["id"];
+    $resultsql = mysqli_query($conn, "SELECT a.*, b.PublisherName FROM book a, publisher b WHERE BookId=".$ma);
+    $rowsql = mysqli_fetch_row($resultsql);
+    if ($rowsql[0] >= 1)
+    {
+        $coroi = false;
+        foreach ($_SESSION['giohang'] as $key => $row)
+        {
+            if ($key === $ma) {
+                $_SESSION['giohang'][$key]["soluong"] +=  1;
+                $coroi = true;
+                // $message_existed = true;
+            }
+        }
+
+        if (!$coroi)
+        {
+            $masach = $rowsql[0];
+            $ten = $rowsql[1];
+            $gia = $rowsql[2];
+            $nsx = $rowsql[11];
+            $dathang = array(
+                             "ten" => $ten,
+                             "gia" => $gia,
+                             "soluong" => 1,
+                             "hang" => $nsx,
+                             "id" => $masach,
+                       );
+            $_SESSION['giohang'][$ma] = $dathang;
+        }
+        echo "<script language='javascript'>
+                alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!');
+              </script>";
+        // $message_success = true;
+    }
+    else
+    {
+        echo "<script>
+                alert('Số lượng bạn đặt vượt quá số lượng trong kho.');
+              </script>";
+    }
+}
+
+if (isset($_GET['action']) && isset($_GET['id']))
+{
+    $ma = $_GET['id'];
+    dathang($ma, $conn);
+}
+
+ ?>
+
 
 <div class="col">
     <div class="container-fluid">
@@ -13,7 +74,20 @@ include ROOT_PATH.'/config/config.db.php';
         <div class="row justify-content-md-center py-3">
             <button type="button" class="btn btn-success btn-lg index-label" disabled>Chi tiết sách</button>
         </div>
+        <?php // if ($message_existed): ?>
+        <!-- <div class="row">
+            <div class="col alert alert-danger">
+                <p>Bạn chỉ được phép mượn tối đa 1 cho mỗi quyển.</p>
+            </div>
+        </div> -->
+        <?php // elseif ($message_success): ?>
+        <!-- <div class="row message_success">
+            <div class="col alert alert-success">
+                <p>Thêm sách vào giỏ hàng thành công. Xem <a href="">giỏ hàng</a></p>
+            </div>
+        </div> -->
         <?php
+        // endif;
         if (!isset($_GET['id'])):
             echo 'Page not found';
         else:
@@ -40,7 +114,7 @@ include ROOT_PATH.'/config/config.db.php';
         <div class="row mt-4">
             <!-- <div class="media mt-4"> -->
             <div class="colg">
-                <img class="align-self-center mr-3 img-book-lg" src='<?= ROOT_PATH.'/'.$img_link ?>' alt="Book Image">
+                <img class="align-self-center mr-3 img-book-lg img-fluid" src='<?= ROOT_PATH.'/'.$img_link ?>' alt="Book Image">
             </div>
             <div class="col">
                 <div class="row">
@@ -75,7 +149,9 @@ include ROOT_PATH.'/config/config.db.php';
                 </div>
                 <div class="row">
                     <div class="col-5">
-                        <input class="btn btn-success btn-block" type="submit" value="Thêm vào giỏ hàng">
+                        <a href="?action=dathang&<?='id='.$book->BookId ?>">
+                            <input class="btn btn-success btn-block" type="submit" value="Thêm vào giỏ hàng">
+                        </a>
                     </div>
                 </div>
             </div>

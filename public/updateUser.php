@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 define('ROOT_PATH', dirname(__DIR__));
 
@@ -143,15 +142,3 @@ function kiemTra(){
 </div>
 </div>
 <?php include TEMPLATES_PATH.'/_footer.php' ?>
-=======
-<?php
-define('ROOT_PATH', dirname(__DIR__));
-
-include ROOT_PATH.'/config/config.php';
-include ROOT_PATH.'/config/config.db.php';
-?>
-
-<?php include TEMPLATES_PATH . '/header.php'; ?>
-
-<?php include TEMPLATES_PATH . '/_footer.php'; ?>
->>>>>>> f9de966f6451922e9d3562ce2bb89b39f5f20d56
