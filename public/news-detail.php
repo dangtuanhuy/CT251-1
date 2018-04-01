@@ -18,3 +18,5 @@ $new = $conn->query($query)->fetch_object();
         <?= $new->NewsContent ?>
     </div>
 </div>
+
+<div class="row" style="margin-top:10px;"></div>
