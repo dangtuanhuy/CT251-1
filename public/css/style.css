@@ -17,7 +17,7 @@ a:hover { text-decoration: none; }
 }
 
 .nav .nav-link {
-    color: #ebe1e1; 
+    color: #ebe1e1;
     padding: .5em;
 }
 
@@ -39,15 +39,15 @@ a:hover { text-decoration: none; }
     background-color: #4DAB6D;
 }
 
-.index-label { 
-    min-width: 220px; 
+.index-label {
+    min-width: 220px;
 }
 
 .img-book { max-height: 160px; }
 .img-book-lg { max-height: 400px; }
 
 #card-badge {
-    font-size: 8px; 
+    font-size: 8px;
     position: absolute;
     background-color: red;
 }
@@ -59,9 +59,15 @@ a:hover { text-decoration: none; }
     background-color: gray;
 }
 #footer a { color: #343a40; }
-#footer a:hover { 
-    text-decoration: none; 
-    color: white; 
+#footer a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 #footer .right { float: right; }
+
+ul#category-list.list-group:after {
+    clear: both;
+    display: block;
+    content: none;
+}

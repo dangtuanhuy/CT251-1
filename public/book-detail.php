@@ -37,8 +37,7 @@ function dathang($ma, $conn)
             $ten = $rowsql[1];
             $gia = $rowsql[2];
             $nsx = $rowsql[11];
-            $dathang = array(
-                             "ten" => $ten,
+            $dathang = array("ten" => $ten,
                              "gia" => $gia,
                              "soluong" => 1,
                              "hang" => $nsx,
@@ -49,7 +48,6 @@ function dathang($ma, $conn)
         echo "<script language='javascript'>
                 alert('Sản phẩm đã được thêm vào giỏ hàng, truy cập giỏ hàng để xem!');
               </script>";
-        // $message_success = true;
     }
     else
     {
@@ -74,20 +72,7 @@ if (isset($_GET['action']) && isset($_GET['id']))
         <div class="row justify-content-md-center py-3">
             <button type="button" class="btn btn-success btn-lg index-label" disabled>Chi tiết sách</button>
         </div>
-        <?php // if ($message_existed): ?>
-        <!-- <div class="row">
-            <div class="col alert alert-danger">
-                <p>Bạn chỉ được phép mượn tối đa 1 cho mỗi quyển.</p>
-            </div>
-        </div> -->
-        <?php // elseif ($message_success): ?>
-        <!-- <div class="row message_success">
-            <div class="col alert alert-success">
-                <p>Thêm sách vào giỏ hàng thành công. Xem <a href="">giỏ hàng</a></p>
-            </div>
-        </div> -->
         <?php
-        // endif;
         if (!isset($_GET['id'])):
             echo 'Page not found';
         else:
@@ -112,7 +97,6 @@ if (isset($_GET['action']) && isset($_GET['id']))
         ?>
 
         <div class="row mt-4">
-            <!-- <div class="media mt-4"> -->
             <div class="colg">
                 <img class="align-self-center mr-3 img-book-lg img-fluid" src='<?= ROOT_PATH.'/'.$img_link ?>' alt="Book Image">
             </div>
@@ -128,7 +112,7 @@ if (isset($_GET['action']) && isset($_GET['id']))
                 </div>
                 <div class="row">
                     <p>
-                        <strong>Giá bìa:</strong> <?= $book->BookPrices ?> VNĐ
+                        <strong>Giá bìa: </strong><?= number_format($book->BookPrices, 0); ?> VNĐ
                         <br>
                         <strong>Tác giả:</strong>
                         <?

@@ -20,18 +20,30 @@
         endif;
         ?>
         <div class="row pt-2">
+        <?php
+            $query = "SELECT BookId FROM book";
+            $result = $conn->query($query);
+            $id = array();
+            while ($row = $result->fetch_array(MYSQLI_NUM)) {
+                array_push($id, $row[0]);
+            };
+            $query = "SELECT * FROM book WHERE BookId = " . array_rand($id);
+            $book = $conn->query($query)->fetch_object();
+            $query_image = "SELECT ImgBook FROM imgbook WHERE BookId = " . $book->BookId;
+            $image = $conn->query($query_image)->fetch_object();
+            $image_path = is_object($image) ? $image->ImgBook : 'public/images/no-image.jpg';
+        ?>
             <!-- Random Article -->
             <div class="col-8 d-none d-lg-block d-xl-block">
                 <div class="media">
-                    <img class="mr-3 rounded" src="http://bit.ly/2AX9mTF" style="max-width: 200px;" alt="Generic placeholder image">
+                    <img class="mr-3 rounded" src="<?= ROOT_PATH.'/'.$image_path;?>" style="max-width: 200px;" alt="Generic placeholder image">
                     <div class="media-body">
                         <h5 class="mt-0 mb-3 text-center">
-                            <a href="" class="text-danger">
-                                <strong>Is It Wrong to Try to Pick Up Girls in a Dungeon?</strong>
+                            <a href="<?= ROOT_PATH.'/public/book-detail.php?id='.$book->BookId ?>" class="text-danger">
+                                <strong><?= $book->BookNames ?></strong>
                             </a>
                         </h5>
-                        Life in the bustling city of Orario is never dull, especially for Bell Cranel, a naïve young man who hopes to become the greatest adventurer in the land. After a chance encounter with the lonely goddess, Hestia, his dreams become a little closer to reality. With her support, Bell embarks on a fantastic quest as he ventures deep within the city's monster-filled catacombs, known only as the "Dungeon." Death lurks around every corner in the cavernous depths of this terrifying labyrinth, and a mysterious power moves amidst the shadows.
-                        <!-- <a href="#" class="btn btn-success mt-3 float-right">Xem chi tiết</a> -->
+                        <?= $book->BookDescription ?>
                     </div>
                 </div>
             </div>
@@ -187,6 +199,5 @@
             endif;
         endwhile;
         ?>
-        <!-- ///Popular book -->
     </div>
 </div>

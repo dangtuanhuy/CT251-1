@@ -25,7 +25,7 @@
                 $image_path = PUBLIC_PATH.'/images/noava.png';
                 $user_path = '#';
                 if (isset($_SESSION['username']) && $_SESSION['username']) {
-                    $user_path = PUBLIC_PATH . '/user-update.php?username=' . $_SESSION['username'];
+                    $user_path = PUBLIC_PATH.'/updateUser.php';
                     $query = "SELECT UserImg FROM user WHERE username = '" . $_SESSION['username'] . "'";
                     $image = $conn->query($query)->fetch_object();
                     $image_path = ROOT_PATH . '/' . $image->UserImg;
@@ -72,10 +72,6 @@
                 <?php
                 if (isset($_SESSION['username']) && $_SESSION['username']):
                 ?>
-                <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/updateUser.php' ?>>
-                    <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
-                    <p class="nav-link-text">Cập Nhật Thông Tin</p>
-                </a>
                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-out.php' ?>>
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng Xuất</p>
