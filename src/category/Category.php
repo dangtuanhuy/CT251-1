@@ -31,19 +31,19 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 <div class="container">
 
 				<form name="frmXoa" method="post" action="">
-					<h1 class="text-center">DANH MỤC SÁCH</h1>
+					<h1 class="text-center">BOOK CATEGORY</h1>
 					<p>
-						<a class="btn btn-info" href="?page=addcategory"><i class="fa fa-plane"></i></a>
+						<a class="btn btn-info" href="?page=addcategory"><i class="fa fa-plus"></i></a>
 					</p>
 					<table class="table-striped table-responsive table-bordered" id="myTable">
 						<thead>
 							<tr>
-								<th><strong>Chọn</strong></th>
-								<th><strong>STT</strong></th>
-								<th><strong>DANH MỤC</strong></th>
-								<th class="col-md-4"><strong>Miêu Tả Sách</strong></th>
-								<th><strong>Xóa</strong></th>
-								<th><strong>Sửa</strong></th>
+								<th><strong>CHOICE</strong></th>
+								<th><strong>NUM</strong></th>
+								<th><strong>CATEGORY NAMES</strong></th>
+								<th class="col-md-4"><strong>DETAILS</strong></th>
+								<th><strong>DELETE</strong></th>
+								<th><strong>EDIT</strong></th>
 							</tr>
 						</thead>
 
@@ -56,14 +56,14 @@ if (isset($_POST['btnXoa'])&&isset($_POST['checkbox']))
 								?>
 								<tr>
 									<td><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php echo $row["CategoryId"] ?>"></td>
-									<td><?php echo $row["CategoryId"] ?></td>
+									<td><?php echo $stt?></td>
 									<td><?php echo $row["CategoryNames"] ?></td>
 									<td><?php echo $row["CategoryDescription"] ?></td>
 									<td align='center'>
-										<a class="btn btn-info" href="?page=publisher&ma=<?php echo $row['CategoryId']; ?>" onclick="return deleteConfirm()">
+										<a class="btn btn-danger" href="?page=publisher&ma=<?php echo $row['CategoryId']; ?>" onclick="return deleteConfirm()">
 											<i class="fa fa-remove"></i></a>
 										</td>
-										<td><a class="btn btn-info" href="?page=updatecategory&ma=<?php echo $row['CategoryId']; ?>"><i class="fa fa-plane"></i></a></td>
+										<td><a class="btn btn-info" href="?page=updatecategory&ma=<?php echo $row['CategoryId']; ?>"><i class="fa fa-edit"></i></a></td>
 									</tr>
 									<?php
 									$stt++;
