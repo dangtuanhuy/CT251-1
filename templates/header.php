@@ -76,6 +76,10 @@
                     <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
                     <p class="nav-link-text">Đăng Xuất</p>
                 </a>
+                <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/book_lend.php' ?>>
+                    <p class="mb-0"><i class="fa fa-bar-chart-o"></i></p>
+                    <p class="nav-link-text">Sách đã mượn</p>
+                </a>
                 <?php
                 else:
                 ?>
