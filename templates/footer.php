@@ -10,7 +10,7 @@
                     <a href=<?= PUBLIC_PATH.'/feedback.php' ?>>Gửi phản hồi</a>
                 </div>
                 <div class="col-lg-1 col-md-2 px-0 text-sm-center">
-                    <a href=<?= PUBLIC_PATH.'/feedback.php' ?>>Về chúng tôi</a>
+                    <a href=<?= TEMPLATES_PATH.'/about.php' ?>>Về chúng tôi</a>
                 </div>
                 <div class="col-lg-1 col-md-2 px-0 text-sm-center">
                     <a href=<?= PUBLIC_PATH.'/LICENSE.php' ?>>LICENSE</a>

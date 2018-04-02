@@ -13,7 +13,7 @@
     <link rel="stylesheet" href=<?= PUBLIC_PATH . '/css/bootstrap.min.css' ?>>
     <link rel="stylesheet" href=<?= PUBLIC_PATH . '/css/style.css' ?>>
     <link rel="icon" href=<?= PUBLIC_PATH. '/images/fav.ico' ?>>
-    <title>Book Management</title>
+    <title>Phát Triển Ứng Dụng trên Windowns</title>
 </head>
 <body>
 <div class="container-fluid pl-0">

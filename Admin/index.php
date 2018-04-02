@@ -1,8 +1,8 @@
 <?php 
 session_start();
-if(!isset($_SESSION['Username'])){
+if (!isset($_SESSION['Username'])):
 	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
-}
+else:
 ?>
 <!DOCTYPE html>
 <html>
@@ -458,3 +458,6 @@ if(isset($_GET['page'])&& $_GET['page']=="ActiveUser1"){
     </script> 
   </body>
   </html>
+<?php
+endif;
+?>
