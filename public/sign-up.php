@@ -39,7 +39,7 @@ include ROOT_PATH.'/config/config.db.php';
 ?>
 <div class="col" >
 <div class="container">
-    <form class="form-horizontal" role="form" method="post" action="#">
+    <form class="form-horizontal" role="form" method="post" action="#" novalidate>
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">

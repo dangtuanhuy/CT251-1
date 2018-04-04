@@ -46,14 +46,14 @@ if(isset($_POST['btnCapNhat'])){
 					SET DisplayName='".$hoten."',Address='".$diachi."',
 					Phone='".$dienthoai."',Passwords='".md5($_POST['txtMatKhau1'])."'
 					WHERE Username = '" . $_SESSION['username'] . "'")
-					or die(mysql_error());
+					or die(mysqli_error());
 		}
 		//Khach hang khong thay doi mat khau
 		else{ mysqli_query($conn, "UPDATE user
 					SET DisplayName='".$hoten."',Address='".$diachi."',
 					Phone='".$dienthoai."'
-					WHERE kh_tendangnhap = '" . $_SESSION['Username'] . "'")
-					or die(mysql_error());
+					WHERE Username = '" . $_SESSION['username'] . "'")
+					or die(mysqli_error());
 		}
 		echo "<script>alert('Cập nhật thành công!');window.location='../';</script>";
 	}else{
@@ -126,7 +126,7 @@ function kiemTra(){
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<in	put type="submit"  class="btn btn-primary text-center" name="btnCapNhat" id="btnCapNhat" value="Cập nhật"/>
+					<input type="submit"  class="btn btn-primary text-center" name="btnCapNhat" id="btnCapNhat" value="Cập nhật"/>
 				</div>
 			</div>
 		</form>
