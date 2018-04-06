@@ -69,11 +69,11 @@ if (isset($_GET['action']) && isset($_GET['id']))
 <div class="col">
     <div class="container-fluid">
         <!-- News -->
-        <div class="row justify-content-md-center py-3">
+        <div class="row justify-content-center py-3">
             <button type="button" class="btn btn-success btn-lg index-label" disabled>Chi tiết sách</button>
         </div>
         <?php
-        if (!isset($_GET['id'])):
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])):
             echo 'Page not found';
         else:
             $book_id = $_GET['id'];
@@ -97,7 +97,7 @@ if (isset($_GET['action']) && isset($_GET['id']))
         ?>
 
         <div class="row mt-4">
-            <div class="colg">
+            <div class="col-lg-4 col-5">
                 <img class="align-self-center mr-3 img-book-lg img-fluid" src='<?= ROOT_PATH.'/'.$img_link ?>' alt="Book Image">
             </div>
             <div class="col">
@@ -134,7 +134,7 @@ if (isset($_GET['action']) && isset($_GET['id']))
                 <div class="row">
                     <div class="col-5">
                         <a href="?action=dathang&<?='id='.$book->BookId ?>">
-                            <input class="btn btn-success btn-block" type="submit" value="Thêm vào giỏ hàng">
+                            <input class="btn btn-success" type="submit" value="Thêm vào giỏ hàng">
                         </a>
                     </div>
                 </div>
