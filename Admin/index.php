@@ -1,4 +1,5 @@
-<?php 
+<?php
+include_once("../config/config.db.php");
 session_start();
 if (!isset($_SESSION['Username'])):
 	echo '<meta http-equiv="refresh" content="0; URL=login.php"/>';
@@ -35,429 +36,386 @@ else:
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-      </head>
-      <body>
-        <!-- Side Navbar -->
-        <nav class="side-navbar">
-          <div class="side-navbar-wrapper">
-            <!-- Sidebar Header    -->
-            <div class="sidenav-header d-flex align-items-center justify-content-center">
-              <!-- User Info-->
-              <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">Nhóm 03</h2><span>Web Developer PHP</span>
-              </div>
-              <!-- Small Brand information, appears on minimized sidebar-->
-              <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
-            </div>
-            <!-- Sidebar Navigation Menus-->
-            <div class="main-menu">
-              <h5 class="sidenav-heading">Quản lý</h5>
-              <ul id="side-main-menu" class="side-menu list-unstyled"> 
-              <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Thống Kê</a></li>                 
-                <li><a href="#Dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-bars"></i>Quản lý Sách</a>
-                  <ul id="Dropdown1" class="collapse list-unstyled ">
-                    <li><a href="?page=category">Quản lý danh mục sách</a></li>
-                    <li><a href="?page=publisher">Quản lý nhà xuất bản</a></li>
-                    <li><a href="?page=author">Quản lý tác giả</a></li>
-                    <li><a href="?page=lang">Quản lý ngôn ngữ</a></li>
-                    <li><a href="?page=lent">Phí Mượn</a></li>
-                    <li><a href="?page=book">Quản lý thông tin sách</a></li>
-                    <li><a href="?page=bookauthor">Quản lý sách - tác giả</a></li>
-               
-                  </ul>
-                </li>
-                
-                <li><a href="?page=user"> <i class="icon-user"></i>Quản lý người dùng</a></li>
-                
-                <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi                            </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Mượn trả</a>
-                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="?page=lenditem">Mượn</a></li>
-                    <li><a href="?page=receive">Trả</a></li>
-                    <li><a href="#">Trả nửa vời</a></li>
-                  </ul>
-                </li>
-                <!-- //?page=news -->
-                <li><a href="?page=news"> <i class="icon-website"></i>Quản lý tin tức                           </a></li>
-                
-                </ul>
-              </div>
-              <!-- <div class="admin-menu"> -->
-                <!-- <h5 class="sidenav-heading">Second menu</h5>
-                <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-                  <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-                  <li> <a href="#"> <i class="icon-flask"> </i>Demo
-                    <div class="badge badge-info">Special</div></a></li>
-                    <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-                    <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
-                  </ul>
+</head>
+<body>
+  <!-- Side Navbar -->
+  <nav class="side-navbar">
+    <div class="side-navbar-wrapper">
+      <!-- Sidebar Header    -->
+      <div class="sidenav-header d-flex align-items-center justify-content-center">
+        <!-- User Info-->
+        <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+          <h2 class="h5">Nhóm 03</h2><span>Web Developer PHP</span>
+        </div>
+        <!-- Small Brand information, appears on minimized sidebar-->
+        <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+      </div>
+      <!-- Sidebar Navigation Menus-->
+      <div class="main-menu">
+        <h5 class="sidenav-heading">Quản lý</h5>
+        <ul id="side-main-menu" class="side-menu list-unstyled">
+          <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Thống Kê</a></li>
+          <li><a href="#Dropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-bars"></i>Quản lý Sách</a>
+            <ul id="Dropdown1" class="collapse list-unstyled ">
+              <li><a href="?page=category">Quản lý danh mục sách</a></li>
+              <li><a href="?page=publisher">Quản lý nhà xuất bản</a></li>
+              <li><a href="?page=author">Quản lý tác giả</a></li>
+              <li><a href="?page=lang">Quản lý ngôn ngữ</a></li>
+              <li><a href="?page=lent">Phí Mượn</a></li>
+              <li><a href="?page=book">Quản lý thông tin sách</a></li>
+              <li><a href="?page=bookauthor">Quản lý sách - tác giả</a></li>
+            </ul>
+          </li>
+          <li><a href="?page=user"> <i class="icon-user"></i>Quản lý người dùng</a></li>
+          <li><a href="?page=feedback"> <i class="icon-grid"></i> Quản lý Phản Hồi</a></li>
+          <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse">
+            <i class="icon-interface-windows"></i>Mượn trả</a>
+            <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+              <li><a href="?page=lenditem">Mượn</a></li>
+              <li><a href="?page=receive">Trả</a></li>
+              <li><a href="#">Trả nửa vời</a></li>
+            </ul>
+          </li>
+            <!-- //?page=news -->
+          <li><a href="?page=news"> <i class="icon-website"></i>Quản lý tin tức</a></li>
+        </ul>
+      </div>
+      <!-- <div class="admin-menu">
+        <h5 class="sidenav-heading">Second menu</h5>
+        <ul id="side-admin-menu" class="side-menu list-unstyled">
+          <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
+          <li> <a href="#"> <i class="icon-flask"> </i>Demo
+            <div class="badge badge-info">Special</div></a></li>
+            <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
+            <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
+        </ul>
+      </div> -->
+    </div>
+  </nav>
+  <div class="page">
+    <!-- navbar-->
+    <header class="header">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-holder d-flex align-items-center justify-content-between">
+            <div class="navbar-header">
+              <a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
+                <div class="brand-text d-none d-md-inline-block">
+                  <span>Bootstrap </span><strong class="text-primary">Dashboard</strong>
                 </div>
-              </div> -->
-            </nav>
-            <div class="page">
-              <!-- navbar-->
-              <header class="header">
-                <nav class="navbar">
-                  <div class="container-fluid">
-                    <div class="navbar-holder d-flex align-items-center justify-content-between">
-                      <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.php" class="navbar-brand">
-                        <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
-                        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                          <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
-                            <ul aria-labelledby="notifications" class="dropdown-menu">
-                              <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                <div class="notification d-flex justify-content-between">
-                                  <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
-                                  <div class="notification-time"><small>4 minutes ago</small></div>
-                                </div></a></li>
-                                <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                  <div class="notification d-flex justify-content-between">
-                                    <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                                    <div class="notification-time"><small>4 minutes ago</small></div>
-                                  </div></a></li>
-                                  <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                    <div class="notification d-flex justify-content-between">
-                                      <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
-                                      <div class="notification-time"><small>4 minutes ago</small></div>
-                                    </div></a></li>
-                                    <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                      <div class="notification d-flex justify-content-between">
-                                        <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                                        <div class="notification-time"><small>10 minutes ago</small></div>
-                                      </div></a></li>
-                                      <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
-                                    </ul>
-                                  </li>
-                                  <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
-                                    <ul aria-labelledby="notifications" class="dropdown-menu">
-                                      <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                        <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                                        <div class="msg-body">
-                                          <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                                        </div></a></li>
-                                        <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                          <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                                          <div class="msg-body">
-                                            <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                                          </div></a></li>
-                                          <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                            <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                                            <div class="msg-body">
-                                              <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                                            </div></a></li>
-                                            <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
-                                          </ul>
-                                        </li>
-                                        <li class="nav-item"><a href="Logout.php" class="nav-link logout"><?php if(isset($_SESSION["Username"])){echo $_SESSION["Username"]."  <i class='fa fa-power-off text-danger'></i>"; }?> </a><i class="fa fa-sign-out"></i></a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </nav>
-                              </header>
-                              <!-- Counts Section -->
-                              <section class="dashboard-counts section-padding">
-                                <?php 
-                                include_once("../config/config.db.php");
-                                ?>
-                                <?php 
-                                if(isset($_GET['page']))
-                                {
-                                  $page = $_GET['page'];
-                                  if($page=="lent")
-                                  {
-                                    include_once("../src/lent/Lent.php");
-                                  }
-                                  if($page=="addlent")
-                                  {
-                                    include_once("../src/lent/addLent.php");
-                                  }
-                                  if($page=="Updatelent")
-                                  {
-                                    include_once("../src/lent/editLent.php");
-                                  }
-    // author
-                                  if($page=="author")
-                                  {
-                                    include_once("../src/author/Author.php");
-                                  }
-                                  if($page=="addauthor")
-                                  {
-                                    include_once("../src/author/addAuthor.php");
-                                  }
-                                  if($page=="updateauthor")
-                                  {
-                                    include_once("../src/author/editAuthor.php");
-                                  }
-    //publisher
-                                  if($page=="publisher")
-                                  {
-                                    include_once("../src/publisher/Publisher.php");
-                                  }
-                                  if($page=="addpublisher")
-                                  {
-                                    include_once("../src/publisher/addPublisher.php");
-                                  }
-                                  if($page=="updatepublisher")
-                                  {
-                                    include_once("../src/publisher/editPublisher.php");
-                                  }
-    //category
-                                  if($page=="category")
-                                  {
-                                    include_once("../src/category/Category.php");
-                                  }
-                                  if($page=="addcategory")
-                                  {
-                                    include_once("../src/category/addCategory.php");
-                                  }
-                                  if($page=="updatecategory")
-                                  {
-                                    include_once("../src/category/editCategory.php");
-                                  }
-    //language
-                                  if($page=="lang")
-                                  {
-                                    include_once("../src/lang/Lang.php");
-                                  }
-                                  if($page=="addlang")
-                                  {
-                                    include_once("../src/lang/addLang.php");
-                                  }
-                                  if($page=="updatelang")
-                                  {
-                                    include_once("../src/lang/editLang.php");
-                                  }
-    //Book
-                                  if($page=="book")
-                                  {
-                                    include_once("../src/book/Book.php");
-                                  }
-                                  if($page=="addbook")
-                                  {
-                                    include_once("../src/book/addBook.php");
-                                  }
-                                  if($page=="updatebook")
-                                  {
-                                    include_once("../src/book/editBook.php");
-                                  }
-                                  if($page=="updatefile")
-                                  {
-                                    include_once("../src/book/updateimages.php");
-                                  }
-    //Book-Author
-                                  if($page=="bookauthor")
-                                  {
-                                    include_once("../src/book-author/BookAuthor.php");
-                                  }
-                                  if($page=="addbook")
-                                  {
-                                    include_once("../src/book/addBook.php");
-                                  }
-                                  if($page=="updatebook")
-                                  {
-                                    include_once("../src/book/editBook.php");
-                                  }
-
-    //News
-                                  if($page=="news")
-                                  {
-                                    include_once("../src/news/News.php");
-                                  }
-                                  if($page=="addnews")
-                                  {
-                                    include_once("../src/news/addNews.php");
-                                  }
-                                  if($page=="updatenews")
-                                  {
-                                    include_once("../src/news/editNews.php");
-                                  }
-
-    //User
-                                  if($page=="user")
-                                  {
-                                    include_once("../src/user/User.php");
-                                  }
-    // Status
-                                  
-    if($page=="bookauthor")
-    {
-      include_once("../src/book-author/BookAuthor.php");
-    }
-    if($page=="addbook")
-    {
-      include_once("../src/book/addBook.php");
-    }
-    if($page=="updatebook")
-    {
-      include_once("../src/book/editBook.php");
-    }
-
-    //News
-    if($page=="news")
-    {
-      include_once("../src/news/News.php");
-    }
-    if($page=="addnews")
-    {
-      include_once("../src/news/addNews.php");
-    }
-    if($page=="updatenews")
-    {
-      include_once("../src/news/editNews.php");
-    }
-    
-    //Feedback
-    if($page=="feedback")
-    {
-      include_once("../src/feedback/feedback.php");
-    }
-    //lenitem
-    if($page=="lenditem")
-    {
-      include_once("../src/lenditem/lenditem.php");
-    }
-    //Imgs
-    if($page=="imgs")
-    {
-      include_once("../src/imgs/imgs.php");
-    }
-    //Imgss
-    if($page=="imgss")
-    {
-      include_once("../src/imgs/imgss.php");
-    }
-    //Receive
-    if($page=="receive")
-    {
-      include_once("../src/receive/Receive.php");
-    }
-    //Receive Status
-if(isset($_GET['page'])&& $_GET['page']=="ActiveUsers"){
-
-                if($_GET['ReceiveStatus'] == 0){
-                  $active = 1;
-                }
-                else{
-                  $active = 0;
-                }
-                $updateStatus = "UPDATE `receiveitem` SET `ReceiveStatus`=".$active." where `ReceiveId` = '".$_GET['ReceiveId']."'";
-                mysqli_query($conn,$updateStatus);
-                echo "<script>window.location.href='?page=receive'</script>";
-              }
-    //User
-    if($page=="user")
-    {
-      include_once("../src/user/User.php");
-    }
-
-//active
-if(isset($_GET['page'])&& $_GET['page']=="ActiveUser"){
-
-                if($_GET['Active'] == 0){
-                  $active = 1;
-                }
-                else{
-                  $active = 0;
-                }
-                $updateStatus = "UPDATE `user` SET `Active`=".$active." where `UserName` = '".$_GET['Username']."'";
-                mysqli_query($conn,$updateStatus);
-                echo "<script>window.location.href='?page=user'</script>";
-              }
-              //Feedback
-              if(isset($_GET['page'])&& $_GET['page']=="ActiveUser2"){
-
-                if($_GET['FeedBackStatus'] == 0){
-                  $active = 1;
-                }
-                else{
-                  $active = 0;
-                }
-                $updateStatus = "UPDATE `feedback` SET `FeedBackStatus`=".$active." where `FeedBackId` = '".$_GET['FeedBackId']."'";
-                mysqli_query($conn,$updateStatus);
-                echo "<script>window.location.href='?page=feedback'</script>";
-              }
-//status
-if(isset($_GET['page'])&& $_GET['page']=="ActiveUser1"){
-
-                if($_GET['Status'] == 0){
-                  $status = 1;
-                }
-                else{
-                  $status = 0;
-                }
-                $updateStatus = "UPDATE `user` SET `Status`=".$status." where `UserName` = '".$_GET['Username']."'";
-                mysqli_query($conn,$updateStatus);
-                echo "<script>window.location.href='?page=user'</script>";
-              }
-  
-  
-                                  }
-                                else
-                                {
-                                  include("statistical.php");
-                                }
-                                ?>
-                              </section>
-                              <footer class="main-footer">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                    <div class="col-sm-6">
-                                      <p>Your company &copy; 2017-2019</p>
-                                    </div>
-                                    <div class="col-sm-6 text-right">
-                                      <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
-                                      <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-                                    </div>
-                                  </div>
-                                </div>
-                              </footer>
-                            </div>
-                            <!-- Javascript files-->
-                            <script src="vendor/jquery/jquery.min.js"></script>
-                            <script src="vendor/popper.js/umd/popper.min.js"> </script>
-                            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-                            <script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
-                            <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
-                            <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-                            <script src="vendor/chart.js/Chart.min.js"></script>
-                            <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-                            <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-                            <script src="js/charts-home.js"></script>
-                            <!-- Main File-->
-                            <script src="js/front.js"></script>
-                            <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
-                            <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-                            <script language="javascript">
-                              $(document).ready(function() {
-                                var table = $('#myTable').DataTable( {
-                                  responsive: true,
-                                  "language": {
-                                    // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
-                                    // "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
-                                    "infoEmpty": "Empty data",
-                                    "emptyTable": "Data not available",
-                                    "processing": "Processing...",
-                                    "search": "Search:",
-                                    "loadingRecords": "Loading data...",
-                                    "zeroRecords": "Data not found",
-                                    // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
-                                    "paginate": {
-                                      "first": "|<",
-                                      "last": ">|",
-                                      "next": ">>",
-                                      "previous": "<<"
-                                    }
-                                  },
-                                  "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
-                                } );
-        //new $.fn.dataTable.FixedHeader( table );
-      } );    
-    </script>  
-    <script language="javascript">
-      CKEDITOR.replace('txtDetails');
-    </script> 
-  </body>
-  </html>
+              </a>
+            </div>
+            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+              <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
+                <ul aria-labelledby="notifications" class="dropdown-menu">
+                  <li><a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                      <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
+                      <div class="notification-time"><small>4 minutes ago</small></div>
+                    </div></a>
+                  </li>
+                  <li><a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                      <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
+                      <div class="notification-time"><small>4 minutes ago</small></div>
+                    </div></a>
+                  </li>
+                  <li><a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                      <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
+                      <div class="notification-time"><small>4 minutes ago</small></div>
+                    </div></a>
+                  </li>
+                  <li><a rel="nofollow" href="#" class="dropdown-item">
+                    <div class="notification d-flex justify-content-between">
+                      <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
+                      <div class="notification-time"><small>10 minutes ago</small></div>
+                    </div></a>
+                  </li>
+                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
+                <ul aria-labelledby="notifications" class="dropdown-menu">
+                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
+                    <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="msg-body">
+                      <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                    </div></a>
+                  </li>
+                  <li>
+                    <a rel="nofollow" href="#" class="dropdown-item d-flex">
+                    <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="msg-body">
+                      <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                    </div></a>
+                  </li>
+                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
+                    <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="msg-body">
+                      <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                    </div></a>
+                  </li>
+                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a href="Logout.php" class="nav-link logout"><?php if (isset($_SESSION["Username"])){echo $_SESSION["Username"]."  <i class='fa fa-power-off text-danger'></i>"; }?> </a><i class="fa fa-sign-out"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Counts Section -->
+    <section class="dashboard-counts section-padding">
+      <?php
+      if (isset($_GET['page']))
+      {
+        $page = $_GET['page'];
+        if ($page === "lent") {
+          include_once("../src/lent/Lent.php");
+        }
+        if ($page === "addlent") {
+          include_once("../src/lent/addLent.php");
+        }
+        if ($page === "Updatelent") {
+          include_once("../src/lent/editLent.php");
+        }
+        // author
+        if ($page === "author") {
+          include_once("../src/author/Author.php");
+        }
+        if ($page === "addauthor") {
+          include_once("../src/author/addAuthor.php");
+        }
+        if ($page === "updateauthor") {
+          include_once("../src/author/editAuthor.php");
+        }
+        //publisher
+        if ($page === "publisher") {
+          include_once("../src/publisher/Publisher.php");
+        }
+        if ($page === "addpublisher") {
+          include_once("../src/publisher/addPublisher.php");
+        }
+        if ($page === "updatepublisher") {
+          include_once("../src/publisher/editPublisher.php");
+        }
+        //category
+        if ($page === "category") {
+          include_once("../src/category/Category.php");
+        }
+        if ($page === "addcategory") {
+          include_once("../src/category/addCategory.php");
+        }
+        if ($page === "updatecategory") {
+          include_once("../src/category/editCategory.php");
+        }
+        //language
+        if ($page === "lang") {
+          include_once("../src/lang/Lang.php");
+        }
+        if ($page === "addlang") {
+          include_once("../src/lang/addLang.php");
+        }
+        if ($page === "updatelang") {
+          include_once("../src/lang/editLang.php");
+        }
+        //Book
+        if ($page === "book") {
+          include_once("../src/book/Book.php");
+        }
+        if ($page === "addbook") {
+          include_once("../src/book/addBook.php");
+        }
+        if ($page === "updatebook") {
+          include_once("../src/book/editBook.php");
+        }
+        if ($page === "updatefile") {
+          include_once("../src/book/updateimages.php");
+        }
+        //Book-Author
+        if ($page === "bookauthor") {
+          include_once("../src/book-author/BookAuthor.php");
+        }
+        if ($page === "addbook") {
+          include_once("../src/book/addBook.php");
+        }
+        if ($page === "updatebook") {
+          include_once("../src/book/editBook.php");
+        }
+        //News
+        if ($page === "news") {
+          include_once("../src/news/News.php");
+        }
+        if ($page === "addnews") {
+          include_once("../src/news/addNews.php");
+        }
+        if ($page === "updatenews") {
+          include_once("../src/news/editNews.php");
+        }
+        //User
+        if ($page === "user") {
+          include_once("../src/user/User.php");
+        }
+        // Status
+        if ($page === "bookauthor") {
+          include_once("../src/book-author/BookAuthor.php");
+        }
+        if ($page === "addbook") {
+          include_once("../src/book/addBook.php");
+        }
+        if ($page === "updatebook") {
+          include_once("../src/book/editBook.php");
+        }
+        //News
+        if ($page === "news") {
+          include_once("../src/news/News.php");
+        }
+        if ($page === "addnews") {
+          include_once("../src/news/addNews.php");
+        }
+        if ($page === "updatenews") {
+          include_once("../src/news/editNews.php");
+        }
+        //Feedback
+        if ($page === "feedback") {
+          include_once("../src/feedback/feedback.php");
+        }
+        //lenitem
+        if ($page === "lenditem") {
+          include_once("../src/lenditem/lenditem.php");
+        }
+        //Imgs
+        if ($page === "imgs") {
+          include_once("../src/imgs/imgs.php");
+        }
+        //Imgss
+        if ($page === "imgss") {
+          include_once("../src/imgs/imgss.php");
+        }
+        //Receive
+        if ($page === "receive") {
+          include_once("../src/receive/Receive.php");
+        }
+        //Receive Status
+        if (isset($_GET['page'])&& $_GET['page']=="ActiveUsers") {
+          if ($_GET['ReceiveStatus'] == 0) {
+            $active = 1;
+          }
+          else {
+            $active = 0;
+          }
+          $updateStatus = "UPDATE `receiveitem` SET `ReceiveStatus`=".$active." where `ReceiveId` = '".$_GET['ReceiveId']."'";
+          mysqli_query($conn,$updateStatus);
+          echo "<script>window.location.href='?page=receive'</script>";
+        }
+        //User
+        if ($page === "user") {
+          include_once("../src/user/User.php");
+        }
+        //active
+        if (isset($_GET['page']) && $_GET['page'] === "ActiveUser"){
+          if ($_GET['Active'] == 0) {
+            $active = 1;
+          }
+          else {
+            $active = 0;
+          }
+          $updateStatus = "UPDATE `user` SET `Active`=".$active." where `UserName` = '".$_GET['Username']."'";
+          mysqli_query($conn,$updateStatus);
+          echo "<script>window.location.href='?page=user'</script>";
+        }
+        //Feedback
+        if (isset($_GET['page']) && $_GET['page'] === "ActiveUser2") {
+          if ($_GET['FeedBackStatus'] == 0) {
+            $active = 1;
+          }
+          else {
+            $active = 0;
+          }
+          $updateStatus = "UPDATE `feedback` SET `FeedBackStatus`=".$active." where `FeedBackId` = '".$_GET['FeedBackId']."'";
+          mysqli_query($conn,$updateStatus);
+          echo "<script>window.location.href='?page=feedback'</script>";
+        }
+        //status
+        if (isset($_GET['page']) && $_GET['page'] === "ActiveUser1") {
+          if ($_GET['Status'] == 0) {
+            $status = 1;
+          }
+          else {
+            $status = 0;
+          }
+          $updateStatus = "UPDATE `user` SET `Status`=".$status." where `UserName` = '".$_GET['Username']."'";
+          mysqli_query($conn,$updateStatus);
+          echo "<script>window.location.href='?page=user'</script>";
+        }
+      }
+      else
+      {
+        include("statistical.php");
+      }
+      ?>
+    </section>
+    <footer class="main-footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>Your company &copy; 2017-2019</p>
+          </div>
+          <div class="col-sm-6 text-right">
+            <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- Javascript files-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
+  <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+  <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="js/charts-home.js"></script>
+  <!-- Main File-->
+  <script src="js/front.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script language="javascript">
+      $(document).ready(function() {
+        var table = $('#myTable').DataTable( {
+          responsive: true,
+          "language": {
+            // "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang",
+            // "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu",
+            "infoEmpty": "Empty data",
+            "emptyTable": "Data not available",
+            "processing": "Processing...",
+            "search": "Search:",
+            "loadingRecords": "Loading data...",
+            "zeroRecords": "Data not found",
+            // "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu)",
+            "paginate": {
+              "first": "|<",
+              "last": ">|",
+              "next": ">>",
+              "previous": "<<"
+            }
+          },
+          "lengthMenu": [[10, 15, 20, 25, 30, -1], [10, 15, 20, 25, 30, "All"]]
+        } );
+      //new $.fn.dataTable.FixedHeader( table );
+    } );
+  </script>
+  <script language="javascript">
+    CKEDITOR.replace('txtDetails');
+  </script>
+</body>
+</html>
 <?php
 endif;
 ?>
