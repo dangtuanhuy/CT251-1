@@ -41,7 +41,7 @@
         <div class="container-fluid">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Charts       </li>
+            <li class="breadcrumb-item active">Charts</li>
           </ul>
         </div>
       </div>
@@ -49,7 +49,7 @@
         <div class="container-fluid">
           <!-- Page Header-->
           <header>
-            <h1 class="h3 display">Charts            </h1>
+            <h1 class="h3 display">Charts</h1>
           </header>
           <div class="row">
             <div class="col-lg-6">
@@ -137,5 +137,9 @@
     <script src="js/charts-custom.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>
+    <!-- CHART -->
+    <script>
+
+    </script>
   </body>
 </html>

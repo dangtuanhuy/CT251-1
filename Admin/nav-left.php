@@ -4,8 +4,16 @@
     <!-- Sidebar Header    -->
     <div class="sidenav-header d-flex align-items-center justify-content-center">
       <!-- User Info-->
-      <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
-        <h2 class="h5">Nhóm 03</h2><span>Web Developer PHP</span>
+      <?php
+      define('ROOT_PATH', dirname(__DIR__));
+      if (isset($_SESSION['Username']) && $_SESSION['Username']) {
+        $query = "SELECT UserImg, DisplayName FROM user WHERE username = '" . $_SESSION['Username'] . "'";
+        $user = $conn->query($query)->fetch_object();
+        $image_path = ROOT_PATH . '/' . $user->UserImg;
+      }
+      ?>
+      <div class="sidenav-header-inner text-center"><img src=<?= $image_path ?> alt="person" class="img-fluid rounded-circle">
+        <h2 class="h5"><?= $user->DisplayName ?></h2><span>Ultimate Administrator</span>
       </div>
       <!-- Small Brand information, appears on minimized sidebar-->
       <div class="sidenav-header-logo"><a href="index.php" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>

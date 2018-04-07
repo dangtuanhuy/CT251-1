@@ -33,9 +33,13 @@ else:
   <link rel="stylesheet" href="css/custom.css">
   <!-- Favicon-->
   <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  <style>
+    a:hover {
+      text-decoration: none;
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <?php
@@ -264,6 +268,7 @@ else:
   <script src="js/charts-home.js"></script>
   <!-- Main File-->
   <script src="js/front.js"></script>
+  <script src="js/chartjs-plugin-datalabels.min.js"></script>
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script language="javascript">
@@ -294,6 +299,76 @@ else:
   </script>
   <script language="javascript">
     CKEDITOR.replace('txtDetails');
+  </script>
+  <script language="javascript">
+    $(document).ready(function(){
+      'use strict'
+      <?php
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $current_year = date('Y', time());
+        $current_month = date('m', time());
+        $list_month = array();
+        $list_value = array();
+        for ($i = 1; $i <=12; $i++) {
+          $month_last_year = $i + $current_month;
+          if ($month_last_year <= 12) {
+            $year = $current_year - 1;
+            $list_month[] = $month_last_year.'/'.($current_year-1);
+            $query = "SELECT COUNT(LendId) as total
+                      FROM lenditem
+                      WHERE YEAR(LendCreateDate) = {$year} AND
+                            MONTH(LendCreateDate) = {$month_last_year}";
+            $list_value[] = $conn->query($query)->fetch_object()->total;
+          }
+          else {
+            $month_this_year = $month_last_year - 12;
+            $list_month[] = ($month_this_year).'/'.$current_year;
+            $query = "SELECT COUNT(LendId) as total
+                      FROM lenditem
+                      WHERE YEAR(LendCreateDate) = {$current_year} AND
+                            MONTH(LendCreateDate) = {$month_this_year}";
+            $list_value[] = $conn->query($query)->fetch_object()->total;
+          }
+        }
+      ?>
+      const total_lent_book_in_12_months = new Chart('chart-total-lent-book', {
+        type: 'line',
+        data: {
+          labels: <?= str_replace('\\', '', json_encode($list_month)) ?>,
+          datasets: [{
+            // label: "ABC",
+            backgroundColor: "#4DAB6D",
+            borderColor: "#4DAB6D",
+            fill: false,
+            data: <?= str_replace('\\', '', json_encode($list_value)) ?>,
+            datalabels: '1'
+          }]
+        },
+        options: {
+          legend: {
+            display: false
+          },
+          plugins: {
+            datalabels: {
+              backgroundColor: function(context) {
+                return context.dataset.backgroundColor;
+              },
+              borderRadius: 4,
+              color: 'white',
+              font: {
+                weight: 'bold'
+              },
+              formatter: Math.round
+            }
+          },
+          scales: {
+            yAxes: [{
+              stacked: true
+            }]
+          }
+        }
+      });
+    })
   </script>
 </body>
 </html>
