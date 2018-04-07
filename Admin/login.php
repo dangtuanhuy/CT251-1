@@ -32,17 +32,19 @@
   </head>
   <body>
   <?php include_once("../config/config.db.php"); ?>
-  <?php 
+  <?php
     if(isset($_POST['btnLogion']))
     {
       $loginusername = trim($_POST["txtloginUsername"]);
 			$loginpassword = trim($_POST["txtloginPassword"]);
       $loginpassword = md5($loginpassword);
-      $result = mysqli_query($connn,"SELECT `Username`,`Passwords`,`Role` FROM user WHERE `Role` = 4 , Username='$loginusername',Passwords='$loginpassword '");
-      if(mysqli_num_rows($result)==0)
+      $result = mysqli_query($conn,"SELECT *
+                                    FROM user
+                                    WHERE `Role` = 4 AND  Username='{$loginusername}' AND Passwords='{$loginpassword}'");
+      if (mysqli_num_rows($result) == 1)
       {
         $_SESSION["Username"] = $loginusername;
-						echo "<script>window.location.href='index.php'</script>";
+        echo "<script>window.location.href='index.php'</script>";
       }
       else
       {
@@ -69,7 +71,7 @@
             </form>
           </div>
           <div class="copyrights text-center">
-            
+
             <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
           </div>
         </div>
