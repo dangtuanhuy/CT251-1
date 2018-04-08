@@ -9,7 +9,7 @@
 			<tr>
 				<th><strong>Mã Trả</strong></th>
 				<th><strong>Ngày trả</strong></th>
-				<th><strong>Name</strong></th>
+				<th><strong>Tên</strong></th>
                 <th><strong>Sách</strong></th>
                 <th><strong>Trạng Thái Yêu Cầu</strong></th>
 			</tr>
@@ -35,10 +35,10 @@
                                         <form  method="post" action="">
                                             <?php 
                                             if ($row["ReceiveStatus"]==1){
-                                                echo '<a class="btn btn-danger" href="?page=ActiveUsers&ReceiveStatus='.$row["ReceiveStatus"].'&ReceiveId='.$row["ReceiveId"].'&BookId='.$row["BookId"].'">Đóng</a>';
+                                                echo '<a class="btn btn-danger" href="?page=ActiveUsers&ReceiveStatus='.$row["ReceiveStatus"].'&ReceiveId='.$row["ReceiveId"].'&BookId='.$row["BookId"].'">Chưa trả sách</a>';
                                             }
                                             else {
-                                                echo '<a class="btn btn-primary" href="?page=ActiveUsers&ReceiveStatus='.$row["ReceiveStatus"].'&ReceiveId='.$row["ReceiveId"].'&BookId='.$row["BookId"].'">Mở</a>';
+                                                echo '<a class="btn btn-primary" href="?page=ActiveUsers&ReceiveStatus='.$row["ReceiveStatus"].'&ReceiveId='.$row["ReceiveId"].'&BookId='.$row["BookId"].'">Đã trả sách</a>';
                                             }
                     ?>
 					</tr>
