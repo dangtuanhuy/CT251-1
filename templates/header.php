@@ -19,7 +19,7 @@
 <div class="container-fluid pl-0">
     <div class="row">
         <!-- Narbar -->
-        <div class="col-1">
+        <div class="col-1 d-none d-md-block">
             <nav class="nav flex-column bg-success-light" id="navbar">
                 <?php
                 $image_path = PUBLIC_PATH.'/images/noava.png';
@@ -41,11 +41,11 @@
                     <p class="mb-0"><i class="fa fa-home"></i></p>
                     <p class="nav-link-text">Trang chủ</p>
                 </a>
-                <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/list-book-category.php'?>">
+                <a class="nav-link text-center" href=<?= ROOT_PATH.'/public/list-book-category.php'?>>
                     <p class="mb-0"><i class="fa fa-list"></i></p>
                     <p class="nav-link-text">Danh mục</p>
                 </a>
-                <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/list-book.php'?>">
+                <a class="nav-link text-center" href=<?= ROOT_PATH.'/public/list-book.php'?>>
                     <p class="mb-0"><i class="fa fa-th-large"></i></p>
                     <p class="nav-link-text">Danh sách</p>
                 </a>
@@ -57,7 +57,7 @@
                     }
                 }
                 ?>
-                <a class="nav-link text-center" href="<?= ROOT_PATH.'/public/card.php'?>">
+                <a class="nav-link text-center" href=<?= ROOT_PATH.'/public/card.php'?>>
                     <p class="mb-0"><i class="fa fa-shopping-cart"></i>
                     <?php if ($totalBook !== 0): ?>
                         <strong class='badge badge-pill' id="card-badge"><?= $totalBook ?> </strong>
@@ -84,7 +84,7 @@
                     <p class="nav-link-text"> Đăng nhập</p>
                 </a>
                 <a class="nav-link text-center" href=<?= PUBLIC_PATH.'/sign-up.php' ?>>
-                    <p class="mb-0"><i class="fa fa-sign-in-alt"></i></p>
+                    <p class="mb-0"><i class="fa fa-user-plus"></i></p>
                     <p class="nav-link-text">Đăng ký</p>
                 </a>
                 <?php
@@ -92,6 +92,19 @@
                 ?>
             </nav>
         </div>
+        <div class="nav fixed-bottom bg-success d-md-none justify-content-center" id="horizontal-nav">
+            <a class="btn btn-lg" href=<?= ROOT_PATH.'/index.php'?>><i class="fa fa-home"></i></a>
+            <a class="btn btn-lg" href=<?= ROOT_PATH.'/public/list-book-category.php'?>><i class="fa fa-list"></i></a>
+            <a class="btn btn-lg" href=<?= ROOT_PATH.'/public/list-book.php'?>><i class="fa fa-th-large"></i></a>
+            <a class="btn btn-lg" href=<?= ROOT_PATH.'/public/card.php'?>><i class="fa fa-shopping-cart"></i></a>
+        <?php if (isset($_SESSION['username']) && $_SESSION['username']): ?>
+            <a class="btn btn-lg" href=<?= PUBLIC_PATH.'/sign-out.php' ?>><i class="fa fa-sign-out-alt"></i></a>
+        <?php else: ?>
+            <a class="btn btn-lg" href=<?= PUBLIC_PATH.'/sign-in.php' ?>><i class="fa fa-sign-in-alt"></i></a>
+            <a class="btn btn-lg" href=<?= PUBLIC_PATH.'/sign-up.php' ?>><i class="fa fa-user-plus"></i></a>
+        <?php endif; ?>
+        </div>
+
         <!-- ///Narbar -->
 <!-- Modal -->
 
